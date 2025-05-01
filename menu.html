@@ -47,14 +47,24 @@
         }
         .swiper-slide img {
             width: 100%;
-            max-width: 300px;
+            max-width: 600px;
             border-radius: 10px;
             margin-bottom: 10px;
         }
         .swiper-slide h2 {
-            font-size: 1.5em;
+            font-size: 2em;
             color: #333;
             margin: 0;
+        }
+        .swiper-slide button {
+            margin-top: 10px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
         .swiper-slide h2 a {
             text-decoration: none;
@@ -63,15 +73,11 @@
         .swiper-slide h2 a:hover {
             text-decoration: underline;
         }
-        .swiper-slide button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            font-size: 1em;
-            color: white;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+
+        /* Navigation Buttons */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #007BFF;
         }
 
         /* Responsive Design */
@@ -124,52 +130,38 @@
     <div class="swiper" id="menu">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <a href="iced-hot-coffee.html">
-                    <img src="https://via.placeholder.com/300x200?text=Iced/Hot+Coffee" alt="Iced/Hot Coffee">
-                    <h2>Iced/Hot Coffee</h2>
-                </a>
+                <h2><a href="iced-hot-coffee.html">Iced/Hot Coffee</a></h2>
+                <img src="menu/5043183.jpg" alt="Iced/Hot Coffee">
                 <button onclick="location.href='iced-hot-coffee.html'">View More</button>
             </div>
             <div class="swiper-slide">
-                <a href="non-coffee.html">
-                    <img src="https://via.placeholder.com/300x200?text=Non-Coffee" alt="Non-Coffee">
-                    <h2>Non-Coffee</h2>
-                </a>
+                <h2><a href="non-coffee.html">Non-Coffee</a></h2>
+                <img src="menu/5043183.jpg" alt="Non-Coffee">
                 <button onclick="location.href='non-coffee.html'">View More</button>
             </div>
             <div class="swiper-slide">
-                <a href="refreshers.html">
-                    <img src="https://via.placeholder.com/300x200?text=refreshers" alt="Refreshers">
-                    <h2>Refreshers</h2>
-                </a>
+                <h2><a href="refreshers.html">Refreshers</a></h2>
+                <img src="menu/5043183.jpg" alt="Refreshers">
                 <button onclick="location.href='refreshers.html'">View More</button>
             </div>
             <div class="swiper-slide">
-                <a href="others.html">
-                    <img src="https://via.placeholder.com/300x200?text=Others" alt="Others">
-                    <h2>Others</h2>
-                </a>
+                <h2><a href="others.html">Others</a></h2>
+                <img src="menu/5043183.jpg" alt="Others">
                 <button onclick="location.href='others.html'">View More</button>
             </div>
             <div class="swiper-slide">
-                <a href="rice-bowls.html">
-                    <img src="https://via.placeholder.com/300x200?text=Rice+Bowls" alt="Rice Bowls">
-                    <h2>Rice Bowls</h2>
-                </a>
+                <h2><a href="rice-bowls.html">Rice Bowls</a></h2>
+                <img src="menu/5043183.jpg" alt="Rice Bowls">
                 <button onclick="location.href='rice-bowls.html'">View More</button>
             </div>
             <div class="swiper-slide">
-                <a href="pasta.html">
-                    <img src="https://via.placeholder.com/300x200?text=Pasta" alt="Pasta">
-                    <h2>Pasta</h2>
-                </a>
+                <h2><a href="pasta.html">Pasta</a></h2>
+                <img src="menu/5043183.jpg" alt="Pasta">
                 <button onclick="location.href='pasta.html'">View More</button>
             </div>
             <div class="swiper-slide">
-                <a href="snacks.html">
-                    <img src="https://via.placeholder.com/300x200?text=Snacks" alt="Snacks">
-                    <h2>Snacks</h2>
-                </a>
+                <h2><a href="snacks.html">Snacks</a></h2>
+                <img src="menu/5043183.jpg" alt="Snacks">
                 <button onclick="location.href='snacks.html'">View More</button>
             </div>
         </div>
@@ -179,8 +171,19 @@
         const swiper = new Swiper('.swiper', {
             loop: true,
             speed: 600,
-            pagination: {
-                clickable: true,
+            slidesPerView: 3, // Show 3 slides at a time
+            spaceBetween: 20, // Space between slides
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2, // Show 2 slides on tablets
+                },
+                480: {
+                    slidesPerView: 1, // Show 1 slide on mobile
+                },
             },
         });
     </script>
