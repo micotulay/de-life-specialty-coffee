@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Error - Page Not Found</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(135deg, #ff6b6b, #f4f4f4);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+       
+        }
+        h1 {
+            font-size: 8rem;
+            margin: 0;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            animation: bounceInDown 1.5s;
+        }
+        p {
+            font-size: 1.5rem;
+            margin: 15px 0 25px;
+            color: #555;
+            animation: fadeInUp 1.5s;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+        a:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        li {
+            list-style: none;
+            padding: 0;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container animate__animated animate__fadeIn">
+        <h1 class="animate__animated animate__bounceInDown">404</h1>
+        <p class="animate__animated animate__fadeInUp">Oops! The page you are looking for does not exist.</p>
+        <li><a href="index.html">Go to Homepage</a></li>
+    </div>
+    <script>
+        document.getElementById('homeLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            alert('Redirecting to the homepage...');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
