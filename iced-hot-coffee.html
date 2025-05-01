@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iced and Hot Coffee Menu</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5rem;
+            color: #6c757d;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #495057;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        li {
+            background-color: #ffffff;
+            padding: 20px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-section {
+            width: 90%;
+            max-width: 1200px;
+            margin-bottom: 30px;
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            ul {
+                gap: 15px;
+            }
+
+            li {
+                font-size: 0.9rem;
+                padding: 15px 10px;
+            }
+
+            .back-button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            ul {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 10px;
+            }
+
+            li {
+                font-size: 0.8rem;
+                padding: 10px 8px;
+            }
+
+            .back-button {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="back-button" onclick="history.back()">Back</button>
+
+    <h1>Iced/Hot Coffee Menu</h1>
+
+    <div class="menu-section">
+        <ul>
+            <li>De Life Signature Coffee (iced only)</li>
+            <li>French Vanilla Latte</li>
+            <li>Caramel Latte</li>
+            <li>Spanish Latte</li>
+            <li>Biscoff Latte</li>
+            <li>Nutella Latte</li>
+            <li>Salted Caramel</li>
+            <li>Caramel Macchiato</li>
+            <li>Dirty Matcha</li>
+            <li>Vanilla Blue Mocha</li>
+            <li>Mocha (dark/white)</li>
+            <li>Flat White (hot only)</li>
+            <li>Americano</li>
+            <li>Espresso (hot only)</li>
+            <li>Latte</li>
+            <li>Cold Brew</li>
+            <li>Cappuccino</li>
+            <li>Spanish Cortado</li>
+            <li>Cortado (hot only)</li>
+            <li>De Life Pistachio Latte</li>
+        </ul>
+    </div>
+</body>
+
+</html>

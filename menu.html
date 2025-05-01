@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+        }
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 15px 30px;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 1.2em;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .swiper {
+            width: 90%;
+            max-width: 800px;
+            padding: 20px 0;
+        }
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .swiper-slide img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .swiper-slide h2 {
+            font-size: 1.5em;
+            color: #333;
+            margin: 0;
+        }
+        .swiper-slide h2 a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .swiper-slide h2 a:hover {
+            text-decoration: underline;
+        }
+        .swiper-slide button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar a {
+                font-size: 1em;
+                margin-left: 10px;
+            }
+            .swiper-slide img {
+                max-width: 250px;
+            }
+            .swiper-slide h2 {
+                font-size: 1.2em;
+            }
+            .swiper-slide button {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+                padding: 10px 15px;
+            }
+            .navbar a {
+                margin: 5px 0;
+                font-size: 0.9em;
+            }
+            .swiper-slide img {
+                max-width: 200px;
+            }
+            .swiper-slide h2 {
+                font-size: 1em;
+            }
+            .swiper-slide button {
+                font-size: 0.8em;
+                padding: 6px 12px;
+            }
+        }
+    </style>    
+</head>
+<body>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About Us</a>
+    </div>
+    <div class="swiper" id="menu">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <a href="iced-hot-coffee.html">
+                    <img src="https://via.placeholder.com/300x200?text=Iced/Hot+Coffee" alt="Iced/Hot Coffee">
+                    <h2>Iced/Hot Coffee</h2>
+                </a>
+                <button onclick="location.href='iced-hot-coffee.html'">View More</button>
+            </div>
+            <div class="swiper-slide">
+                <a href="non-coffee.html">
+                    <img src="https://via.placeholder.com/300x200?text=Non-Coffee" alt="Non-Coffee">
+                    <h2>Non-Coffee</h2>
+                </a>
+                <button onclick="location.href='non-coffee.html'">View More</button>
+            </div>
+            <div class="swiper-slide">
+                <a href="refreshers.html">
+                    <img src="https://via.placeholder.com/300x200?text=refreshers" alt="Refreshers">
+                    <h2>Refreshers</h2>
+                </a>
+                <button onclick="location.href='refreshers.html'">View More</button>
+            </div>
+            <div class="swiper-slide">
+                <a href="others.html">
+                    <img src="https://via.placeholder.com/300x200?text=Others" alt="Others">
+                    <h2>Others</h2>
+                </a>
+                <button onclick="location.href='others.html'">View More</button>
+            </div>
+            <div class="swiper-slide">
+                <a href="rice-bowls.html">
+                    <img src="https://via.placeholder.com/300x200?text=Rice+Bowls" alt="Rice Bowls">
+                    <h2>Rice Bowls</h2>
+                </a>
+                <button onclick="location.href='rice-bowls.html'">View More</button>
+            </div>
+            <div class="swiper-slide">
+                <a href="pasta.html">
+                    <img src="https://via.placeholder.com/300x200?text=Pasta" alt="Pasta">
+                    <h2>Pasta</h2>
+                </a>
+                <button onclick="location.href='pasta.html'">View More</button>
+            </div>
+            <div class="swiper-slide">
+                <a href="snacks.html">
+                    <img src="https://via.placeholder.com/300x200?text=Snacks" alt="Snacks">
+                    <h2>Snacks</h2>
+                </a>
+                <button onclick="location.href='snacks.html'">View More</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.swiper', {
+            loop: true,
+            speed: 600,
+            pagination: {
+                clickable: true,
+            },
+        });
+    </script>
+</body>
+</html>

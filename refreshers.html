@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refreshers Menu</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5rem;
+            color: #6c757d;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #495057;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Default: 3 columns */
+            gap: 20px;
+            width: 90%; /* Fill most of the page width */
+        }
+
+        li {
+            background-color: #ffffff;
+            padding: 30px; /* Increased padding for larger items */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-size: 1.5rem; /* Increased font size */
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-section {
+            width: 100%;
+            max-width: 1200px;
+            margin-bottom: 30px;
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Media Queries */
+        @media (max-width: 1024px) {
+            ul {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+            }
+
+            li {
+                font-size: 1.3rem; /* Slightly smaller font size */
+                padding: 20px; /* Adjust padding */
+            }
+        }
+
+        @media (max-width: 768px) {
+            ul {
+                grid-template-columns: 1fr; /* 1 column for mobile */
+            }
+
+            li {
+                font-size: 1.2rem; /* Smaller font size */
+                padding: 15px; /* Adjust padding */
+            }
+
+            h1 {
+                font-size: 2rem; /* Adjust heading size */
+            }
+
+            .back-button {
+                font-size: 14px; /* Adjust button size */
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <button class="back-button" onclick="history.back()">Back</button>
+
+    <h1>Refreshers Menu</h1>
+
+    <div class="menu-section">
+        <ul>
+            <li>De Life Refreshers</li>
+            <li>Blue Lagoon Nojito</li>
+            <li>Lemon Mint Juice</li>
+            <li>Lemon Mint Smoothie</li>
+            <li>Mermaid Refreshers</li>
+            <li>Strawberry Nojito</li>
+        </ul>
+    </div>
+</body>
+</html>
