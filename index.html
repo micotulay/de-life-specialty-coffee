@@ -199,25 +199,39 @@
     }
     @media (max-width: 480px) {
         .hamburger {
-            display: flex;
-        }
-        .nav-links {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            background-color: #292929;
-            position: absolute;
-            top: 60px;
-            right: 0;
-            width: 100%;
-            padding: 20px 0;
-        }
-        .nav-links.active {
-            display: flex;
-        }
-        .nav-links li {
-            margin: 10px 0;
-        }
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1000; /* Ensure it stays above other elements */
+    }
+    .hamburger span {
+        width: 30px;
+        height: 3px;
+        background-color: #fff;
+        transition: all 0.3s ease-in-out;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        background-color: #292929;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 20px 0;
+        z-index: 999; /* Ensure it stays above other elements */
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        margin: 10px 0;
+    }
         header {
             flex-direction: column;
             align-items: center;
@@ -244,6 +258,14 @@
         }
         .social li a img {
             max-width: 20px;
+        }
+    }
+    @media (max-width: 480px) {
+        .hamburger {
+            display: flex;
+        }
+        header ul {
+            display: none; /* Hide the default navigation for mobile */
         }
     }
     </style>
