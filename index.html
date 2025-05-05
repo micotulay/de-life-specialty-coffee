@@ -180,7 +180,44 @@
     }
 
     /* Media Queries for Mobile */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+    }
+    .hamburger span {
+        width: 30px;
+        height: 3px;
+        background-color: #fff;
+        transition: all 0.3s ease-in-out;
+    }
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
     @media (max-width: 480px) {
+        .hamburger {
+            display: flex;
+        }
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            background-color: #292929;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            width: 100%;
+            padding: 20px 0;
+        }
+        .nav-links.active {
+            display: flex;
+        }
+        .nav-links li {
+            margin: 10px 0;
+        }
         header {
             flex-direction: column;
             align-items: center;
@@ -216,11 +253,16 @@
         <div class="circle"></div>
         <header>
             <a href="#"><img src="logo.jpg" class="logo" alt="De Life Specialty Logo" /></a>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="menu.html">Menu</a></li>
-                <li><a href="About us.html">About us</a></li>
-            </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="About us.html">About us</a></li>
+    </ul>
         </header>
         <div class="container">
             <div class="text-box">
@@ -236,8 +278,8 @@
             <li><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/thumb3.png" onclick="imgSlider('https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img3.png');changeCircleColor('#d752b1')" /></li>
         </ul>
         <ul class="social">
-            <li><a href="#"><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/facebook.png" alt="Facebook" /></a></li>
-            <li><a href="#"><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/instagram.png" alt="Instagram" /></a></li>
+            <li><a href="https://www.facebook.com/share/1EtZnXzBYN/" target="_blank"><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/facebook.png" alt="Facebook" /></a></li>
+            <li><a href="https://www.instagram.com/delife.specialtycoffee?igsh=MW0wM3Y5MDljd2UwMg==" target="_blank"><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/instagram.png" alt="Instagram" /></a></li>
         </ul>
     </section>
     <script>
@@ -247,6 +289,10 @@
         function changeCircleColor(color) {
             document.querySelector('.circle').style.background = color;
         }
+        function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    }
     </script>
 </body>
 </html>
