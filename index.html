@@ -122,21 +122,41 @@
         display: flex;
         justify-content: center;
         margin-top: 20px;
+        gap: 20px; /* Add spacing between icons */
+    }
+    .social {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        gap: 20px; /* Add spacing between icons */
     }
     .social li {
         list-style: none;
-        margin: 0 10px;
+    }
+    .social li a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px; /* Set circular size */
+        height: 50px;
+        background-color: #017143; /* Circle background color */
+        border-radius: 50%; /* Make it circular */
+        transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
+    .social li a:hover {
+        transform: scale(1.2); /* Add hover scaling effect */
+        background-color: #0eb749; /* Change background color on hover */
     }
     .social li a img {
-        max-width: 30px;
-        filter: invert(1);
+        max-width: 24px; /* Adjust icon size */
+        height: auto;
+        filter: invert(1); /* Ensure icons are visible on dark backgrounds */
     }
-
     /* Media Queries for Tablets */
     @media (max-width: 768px) {
         header ul {
             flex-direction: column;
-            align-items: center;
+            align-items: left;
         }
         header ul li a {
             margin: 10px 0;
@@ -216,9 +236,8 @@
             <li><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/thumb3.png" onclick="imgSlider('https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img3.png');changeCircleColor('#d752b1')" /></li>
         </ul>
         <ul class="social">
-            <li><a href="#"><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/facebook.png" /></a></li>
-            <li><a href="#"><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/instagram.png" /></a></li>
-            <li><a href="#"><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/twitter.png" /></a></li>
+            <li><a href="#"><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/facebook.png" alt="Facebook" /></a></li>
+            <li><a href="#"><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/instagram.png" alt="Instagram" /></a></li>
         </ul>
     </section>
     <script>
