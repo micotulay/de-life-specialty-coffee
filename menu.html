@@ -2,131 +2,117 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f9f9f9;
         }
+
         .navbar {
+            background-color: #333;
+            overflow: hidden;
             display: flex;
             justify-content: center;
-            background-color: #333;
-            padding: 15px 30px;
-            position: absolute;
-            top: 0;
-            width: 100%;
+            padding: 10px 0;
         }
+
         .navbar a {
             color: white;
+            padding: 14px 20px;
             text-decoration: none;
-            margin-left: 20px;
-            font-size: 1.2em;
-        }
-        .navbar a:hover {
-            text-decoration: underline;
-        }
-        .swiper {
-            width: 90%;
-            max-width: 800px;
-            padding: 20px 0;
-        }
-        .swiper-slide {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: center;
         }
-        .swiper-slide img {
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .swiper {
             width: 100%;
-            max-width: 600px;
+            padding: 40px 0;
+            box-sizing: border-box;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            border: 1px solid #ddd;
             border-radius: 10px;
-            margin-bottom: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        .swiper-slide h2 {
-            font-size: 2em;
+
+        .swiper-slide img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .swiper-slide h2 a {
+            text-decoration: none;
             color: #333;
-            margin: 0;
         }
+
         .swiper-slide button {
             margin-top: 10px;
-            padding: 15px 30px;
-            font-size: 1.2em;
+            padding: 10px 15px;
+            background-color: #333;
             color: white;
-            background-color: #007BFF;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
-        .swiper-slide h2 a {
-            text-decoration: none;
-            color: inherit;
-        }
-        .swiper-slide h2 a:hover {
-            text-decoration: underline;
+
+        .swiper-slide button:hover {
+            background-color: #555;
         }
 
-        /* Navigation Buttons */
+         /* Media query for mobile devices */
+    @media (max-width: 768px) {
+        .swiper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .swiper-wrapper {
+            display: contents; /* Remove Swiper's wrapper behavior */
+        }
+
+        .swiper-slide {
+            flex: 1 1 calc(50% - 20px); /* Two tiles per row */
+            max-width: calc(50% - 20px);
+            margin: 0;
+        }
+
+        .swiper-slide img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Hide Swiper navigation and pagination on mobile */
         .swiper-button-next,
-        .swiper-button-prev {
-            color: #007BFF;
+        .swiper-button-prev,
+        .swiper-pagination {
+            display: none;
         }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .navbar a {
-                font-size: 1em;
-                margin-left: 10px;
-            }
-            .swiper-slide img {
-                max-width: 250px;
-            }
-            .swiper-slide h2 {
-                font-size: 1.2em;
-            }
-            .swiper-slide button {
-                font-size: 0.9em;
-                padding: 8px 16px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .navbar {
-                flex-direction: column;
-                align-items: center;
-                padding: 10px 15px;
-            }
-            .navbar a {
-                margin: 5px 0;
-                font-size: 0.9em;
-            }
-            .swiper-slide img {
-                max-width: 200px;
-            }
-            .swiper-slide h2 {
-                font-size: 1em;
-            }
-            .swiper-slide button {
-                font-size: 0.8em;
-                padding: 6px 12px;
-            }
-        }
-    </style>    
+    }
+    </style>
 </head>
 <body>
+
     <div class="navbar">
         <a href="index.html">Home</a>
         <a href="menu.html">Menu</a>
         <a href="about.html">About Us</a>
     </div>
+
     <div class="swiper" id="menu">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -165,26 +151,40 @@
                 <button onclick="location.href='snacks.html'">View More</button>
             </div>
         </div>
+        <!-- Optional navigation buttons -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
     </div>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        const swiper = new Swiper('.swiper', {
+        const swiper = new Swiper('#menu', {
+            slidesPerView: 3,
+            spaceBetween: 30,
             loop: true,
-            speed: 600,
-            slidesPerView: 3, // Show 3 slides at a time
-            spaceBetween: 20, // Space between slides
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
             breakpoints: {
-                768: {
-                    slidesPerView: 2, // Show 2 slides on tablets
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
                 },
-                480: {
-                    slidesPerView: 1, // Show 1 slide on mobile
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
                 },
-            },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            }
         });
     </script>
 </body>
