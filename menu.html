@@ -75,8 +75,8 @@
          /* Media query for mobile devices */
     @media (max-width: 480px) {
         .swiper {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two tiles per row */
             gap: 20px;
             padding: 20px;
         }
@@ -86,8 +86,7 @@
         }
 
         .swiper-slide {
-            flex: 1 1 calc(50% - 20px); /* Two tiles per row */
-            max-width: calc(50% - 20px);
+            width: 100%; /* Ensure tiles take full width of their grid cell */
             margin: 0;
             box-sizing: border-box;
         }
