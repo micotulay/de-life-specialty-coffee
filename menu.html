@@ -72,48 +72,65 @@
             background-color: #555;
         }
 
-         /* Media query for mobile devices */
-    @media (max-width: 480px) {
-        .swiper {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Two tiles per row */
-            gap: 20px;
-            padding: 20px;
-        }
+        /* Mobile view adjustments */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
 
-        .swiper-wrapper {
-            display: contents; /* Remove Swiper's wrapper behavior */
-        }
+            .swiper {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                padding: 20px;
+                animation: fadeIn 0.5s ease-in-out;
+            }
 
-        .swiper-slide {
-            width: 100%; /* Ensure tiles take full width of their grid cell */
-            margin: 0;
-            box-sizing: border-box;
-        }
+            .swiper-wrapper {
+                display: contents;
+            }
 
-        .swiper-slide img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
+            .swiper-slide {
+                width: 100%;
+                margin: 0;
+                box-sizing: border-box;
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.2s ease;
+            }
 
-        .swiper-slide h2 {
-            font-size: 16px;
-            margin: 10px 0;
-        }
+            .swiper-slide:hover {
+                transform: translateY(-4px);
+            }
 
-        .swiper-slide button {
-            font-size: 14px;
-            padding: 8px 12px;
-        }
+            .swiper-slide img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+            }
 
-        /* Hide Swiper navigation and pagination on mobile */
-        .swiper-button-next,
-        .swiper-button-prev,
-        .swiper-pagination {
-            display: none;
+            .swiper-slide h2 {
+                font-size: 14px;
+                margin: 10px 0;
+            }
+
+            .swiper-slide button {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+
+            .swiper-button-next,
+            .swiper-button-prev,
+            .swiper-pagination {
+                display: none;
+            }
+
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
         }
-    }
     </style>
 </head>
 <body>
@@ -128,41 +145,41 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <h2><a href="iced-hot-coffee.html">Iced/Hot Coffee</a></h2>
-                <img src="menu/5043183.jpg" alt="Iced/Hot Coffee">
+                <img src="menu/5043183.jpg" alt="Iced/Hot Coffee" loading="lazy">
                 <button onclick="location.href='iced-hot-coffee.html'">View More</button>
             </div>
             <div class="swiper-slide">
                 <h2><a href="non-coffee.html">Non-Coffee</a></h2>
-                <img src="menu/5043183.jpg" alt="Non-Coffee">
+                <img src="menu/5043183.jpg" alt="Non-Coffee" loading="lazy">
                 <button onclick="location.href='non-coffee.html'">View More</button>
             </div>
             <div class="swiper-slide">
                 <h2><a href="refreshers.html">Refreshers</a></h2>
-                <img src="menu/5043183.jpg" alt="Refreshers">
+                <img src="menu/5043183.jpg" alt="Refreshers" loading="lazy">
                 <button onclick="location.href='refreshers.html'">View More</button>
             </div>
             <div class="swiper-slide">
                 <h2><a href="others.html">Others</a></h2>
-                <img src="menu/5043183.jpg" alt="Others">
+                <img src="menu/5043183.jpg" alt="Others" loading="lazy">
                 <button onclick="location.href='others.html'">View More</button>
             </div>
             <div class="swiper-slide">
                 <h2><a href="rice-bowls.html">Rice Bowls</a></h2>
-                <img src="menu/5043183.jpg" alt="Rice Bowls">
+                <img src="menu/5043183.jpg" alt="Rice Bowls" loading="lazy">
                 <button onclick="location.href='rice-bowls.html'">View More</button>
             </div>
             <div class="swiper-slide">
                 <h2><a href="pasta.html">Pasta</a></h2>
-                <img src="menu/5043183.jpg" alt="Pasta">
+                <img src="menu/5043183.jpg" alt="Pasta" loading="lazy">
                 <button onclick="location.href='pasta.html'">View More</button>
             </div>
             <div class="swiper-slide">
                 <h2><a href="snacks.html">Snacks</a></h2>
-                <img src="menu/5043183.jpg" alt="Snacks">
+                <img src="menu/5043183.jpg" alt="Snacks" loading="lazy">
                 <button onclick="location.href='snacks.html'">View More</button>
             </div>
         </div>
-        <!-- Optional navigation buttons -->
+        <!-- Navigation (hidden on mobile) -->
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-pagination"></div>
@@ -170,33 +187,36 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        const swiper = new Swiper('#menu', {
-            slidesPerView: 3,
-            spaceBetween: 30,
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 10,
+        // Initialize Swiper only if screen is wider than 480px
+        if (window.innerWidth > 480) {
+            const swiper = new Swiper('#menu', {
+                slidesPerView: 3,
+                spaceBetween: 30,
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
                 },
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
                 },
-                1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 30,
-                },
-            }
-        });
+                breakpoints: {
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
+                    },
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                }
+            });
+        }
     </script>
 </body>
 </html>
