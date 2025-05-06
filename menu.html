@@ -89,11 +89,23 @@
             flex: 1 1 calc(50% - 20px); /* Two tiles per row */
             max-width: calc(50% - 20px);
             margin: 0;
+            box-sizing: border-box;
         }
 
         .swiper-slide img {
             max-width: 100%;
             height: auto;
+            border-radius: 8px;
+        }
+
+        .swiper-slide h2 {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .swiper-slide button {
+            font-size: 14px;
+            padding: 8px 12px;
         }
 
         /* Hide Swiper navigation and pagination on mobile */
