@@ -1,222 +1,458 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Menu</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Card Carousel</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .navbar {
-            background-color: #333;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            padding: 10px 0;
-        }
+    html {
+      font-family: system-ui;
+      background: #292929;
+    }
 
-        .navbar a {
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            text-align: center;
-        }
+    .visuallyhidden {
+      position: absolute;
+      z-index: -1;
+      right: 0;
+      opacity: 0;
+    }
 
-        .navbar a:hover {
-            background-color: #ddd;
-            color: black;
-        }
+    h1 {
+      color: white;
+      text-align: center;
+      margin-top: 1em;
+    }
 
-        .swiper {
-            width: 100%;
-            padding: 40px 0;
-            box-sizing: border-box;
-        }
+    nav {
+      background: #333;
+      padding: 1em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2em;
+    }
 
-        .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+      transition: color 0.3s;
+    }
 
-        .swiper-slide img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
+    nav a:hover {
+      color: #017143;
+    }
 
-        .swiper-slide h2 a {
-            text-decoration: none;
-            color: #333;
-        }
+    .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.1);
+  }
 
-        .swiper-slide button {
-            margin-top: 10px;
-            padding: 10px 15px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+  .card-carousel {
+    --card-width: 80%;
+    --card-max-width: 280px;
+    --card-height: 350px;
+    --carousel-min-width: 600px;
+    z-index: 1;
+    position: relative;
+    width: 100%;
+    height: var(--card-height);
+    min-width: var(--carousel-min-width);
+    transition: filter 0.3s ease;
+  }
 
-        .swiper-slide button:hover {
-            background-color: #555;
-        }
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit text color */
+  }
 
-        /* Mobile view adjustments */
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
+  .card .image-container,
+  .card p {
+    pointer-events: none; /* Prevent child elements from intercepting clicks */
+  }
 
-            .swiper {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 16px;
-                padding: 20px;
-                animation: fadeIn 0.5s ease-in-out;
-            }
+    @media screen and (max-width: 640px) {
+      .card-carousel {
+        margin-left: calc((100vw - var(--carousel-min-width) - 40px) / 2)
+      }
+    }
 
-            .swiper-wrapper {
-                display: contents;
-            }
+    .card-carousel.smooth-return {
+      transition: all .2s ease;
+    }
 
-            .swiper-slide {
-                width: 100%;
-                margin: 0;
-                box-sizing: border-box;
-                background-color: #fff;
-                border-radius: 10px;
-                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-                transition: transform 0.2s ease;
-            }
+    .card-carousel .card {
+      background: whitesmoke;
+      width: var(--card-width);
+      max-width: var(--card-max-width);
+      text-align: center;
+      padding: 1em;
+      min-width: 250px;
+      height: var(--card-height);
+      position: absolute;
+      margin: 0 auto;
+      color: rgba(0,0,0,.5);
+      transition: inherit;
+      box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
+      border-radius: 1em;
+      filter: brightness(.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
 
-            .swiper-slide:hover {
-                transform: translateY(-4px);
-            }
+    .card.highlight {
+      filter: brightness(1);
+    }
 
-            .swiper-slide img {
-                max-width: 100%;
-                height: auto;
-                border-radius: 8px;
-            }
+    .card:nth-of-type(1) .image-container {
+      background-image: url("https://static.addtoany.com/images/dracaena-cinnabari.jpg");
+    }
 
-            .swiper-slide h2 {
-                font-size: 14px;
-                margin: 10px 0;
-            }
+    .card:nth-of-type(2) .image-container {
+      background-image: url("https://www.w3schools.com/w3css/img_lights.jpg");
+    }
 
-            .swiper-slide button {
-                font-size: 14px;
-                padding: 8px 12px;
-            }
+    .card:nth-of-type(3) .image-container {
+      background-image: url("https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+    }
 
-            .swiper-button-next,
-            .swiper-button-prev,
-            .swiper-pagination {
-                display: none;
-            }
+    .card:nth-of-type(4) .image-container {
+      background-image: url("https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+    }
 
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(20px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-        }
-    </style>
+    .card:nth-of-type(5) .image-container {
+      background-image: url("https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg");
+    }
+
+    .image-container {
+      width: 8em;
+      height: 8em;
+      position: relative;
+      background-size: cover;
+      margin-bottom: 2em;
+      border-radius: 100%;
+      padding: 1em;
+      box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.3);
+    }
+
+    .image-container::after {
+      content: "";
+      display: block;
+      width: 120%;
+      height: 120%;
+      border: solid 3px rgba(0,0,0,.1);
+      border-radius: 100%;
+      position: absolute;
+      top: calc(-10% - 3px);
+      left: calc(-10% - 3px);
+    }
+
+    h2 {
+      padding: 1em;
+      margin-top: 1em;
+      background: rgba(0,0,0,.3);
+      text-align: center;
+      color: white;
+      border-radius: .2em;
+      display: inline-block;
+      transform: translateX(calc((100vw - 100%) / 2));
+    }
+
+    h2 a {
+      color: #f5b916;
+    }
+  </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="About us.html">About Us</a>
+  </nav>
 
-    <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="menu.html">Menu</a>
-        <a href="about.html">About Us</a>
+  <div class="container">
+    <div class="card-carousel">
+      <a href="iced-hot-coffee.html" class="card" id="1">
+        <div class="image-container"></div>
+        <p>COFFEE</p>
+      </a>
+      <a href="non-coffee.html" class="card" id="2">
+        <div class="image-container"></div>
+        <p>NON-COFFEE</p>
+      </a>
+      <a href="refreshers.html" class="card" id="3">
+        <div class="image-container"></div>
+        <p>REFRESHERS</p>
+      </a>
+      <a href="others.html" class="card" id="4">
+        <div class="image-container"></div>
+        <p>OTHERS</p>
+      </a>
+      <a href="page5.html" class="card" id="5">
+        <div class="image-container"></div>
+        <p>5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
+      </a>
     </div>
+    <a href="#" class="visuallyhidden card-controller">Carousel controller</a>
+  </div>
 
-    <div class="swiper" id="menu">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <h2><a href="iced-hot-coffee.html">Iced/Hot Coffee</a></h2>
-                <img src="menu/5043183.jpg" alt="Iced/Hot Coffee" loading="lazy">
-                <button onclick="location.href='iced-hot-coffee.html'">View More</button>
-            </div>
-            <div class="swiper-slide">
-                <h2><a href="non-coffee.html">Non-Coffee</a></h2>
-                <img src="menu/5043183.jpg" alt="Non-Coffee" loading="lazy">
-                <button onclick="location.href='non-coffee.html'">View More</button>
-            </div>
-            <div class="swiper-slide">
-                <h2><a href="refreshers.html">Refreshers</a></h2>
-                <img src="menu/5043183.jpg" alt="Refreshers" loading="lazy">
-                <button onclick="location.href='refreshers.html'">View More</button>
-            </div>
-            <div class="swiper-slide">
-                <h2><a href="others.html">Others</a></h2>
-                <img src="menu/5043183.jpg" alt="Others" loading="lazy">
-                <button onclick="location.href='others.html'">View More</button>
-            </div>
-            <div class="swiper-slide">
-                <h2><a href="rice-bowls.html">Rice Bowls</a></h2>
-                <img src="menu/5043183.jpg" alt="Rice Bowls" loading="lazy">
-                <button onclick="location.href='rice-bowls.html'">View More</button>
-            </div>
-            <div class="swiper-slide">
-                <h2><a href="pasta.html">Pasta</a></h2>
-                <img src="menu/5043183.jpg" alt="Pasta" loading="lazy">
-                <button onclick="location.href='pasta.html'">View More</button>
-            </div>
-            <div class="swiper-slide">
-                <h2><a href="snacks.html">Snacks</a></h2>
-                <img src="menu/5043183.jpg" alt="Snacks" loading="lazy">
-                <button onclick="location.href='snacks.html'">View More</button>
-            </div>
-        </div>
-        <!-- Navigation (hidden on mobile) -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        // Initialize Swiper only if screen is wider than 480px
-        if (window.innerWidth > 480) {
-            const swiper = new Swiper('#menu', {
-                slidesPerView: 3,
-                spaceBetween: 30,
-                loop: true,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                breakpoints: {
-                    320: {
-                        slidesPerView: 1,
-                        spaceBetween: 10,
-                    },
-                    640: {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
-                    },
-                    1024: {
-                        slidesPerView: 3,
-                        spaceBetween: 30,
-                    },
-                }
-            });
+  <script>
+    // Existing carousel logic
+    const cardsContainer = document.querySelector(".card-carousel");
+    const cardsController = document.querySelector(".card-carousel + .card-controller");
+  
+    class DraggingEvent {
+      constructor(target = undefined) {
+        this.target = target;
+      }
+      event(callback) {
+        let handler;
+        this.target.addEventListener("mousedown", e => {
+          e.preventDefault();
+          handler = callback(e);
+          window.addEventListener("mousemove", handler);
+          document.addEventListener("mouseleave", clearDraggingEvent);
+          window.addEventListener("mouseup", clearDraggingEvent);
+          function clearDraggingEvent() {
+            window.removeEventListener("mousemove", handler);
+            window.removeEventListener("mouseup", clearDraggingEvent);
+            document.removeEventListener("mouseleave", clearDraggingEvent);
+            handler(null);
+          }
+        });
+        this.target.addEventListener("touchstart", e => {
+          handler = callback(e);
+          window.addEventListener("touchmove", handler);
+          window.addEventListener("touchend", clearDraggingEvent);
+          document.body.addEventListener("mouseleave", clearDraggingEvent);
+          function clearDraggingEvent() {
+            window.removeEventListener("touchmove", handler);
+            window.removeEventListener("touchend", clearDraggingEvent);
+            handler(null);
+          }
+        });
+      }
+      getDistance(callback) {
+        function distanceInit(e1) {
+          let startingX, startingY;
+          if ("touches" in e1) {
+            startingX = e1.touches[0].clientX;
+            startingY = e1.touches[0].clientY;
+          } else {
+            startingX = e1.clientX;
+            startingY = e1.clientY;
+          }
+          return function(e2) {
+            if (e2 === null) {
+              return callback(null);
+            } else {
+              if ("touches" in e2) {
+                return callback({
+                  x: e2.touches[0].clientX - startingX,
+                  y: e2.touches[0].clientY - startingY
+                });
+              } else {
+                return callback({
+                  x: e2.clientX - startingX,
+                  y: e2.clientY - startingY
+                });
+              }
+            }
+          };
         }
-    </script>
+        this.event(distanceInit);
+      }
+    }
+  
+    class CardCarousel extends DraggingEvent {
+      constructor(container, controller = undefined) {
+        super(container);
+        this.container = container;
+        this.controllerElement = controller;
+        this.cards = container.querySelectorAll(".card");
+        this.centerIndex = (this.cards.length - 1) / 2;
+        this.cardWidth = this.cards[0].offsetWidth / this.container.offsetWidth * 100;
+        this.xScale = {};
+        window.addEventListener("resize", this.updateCardWidth.bind(this));
+        if (this.controllerElement) {
+          this.controllerElement.addEventListener("keydown", this.controller.bind(this));
+        }
+        this.build();
+        super.getDistance(this.moveCards.bind(this));
+      }
+      updateCardWidth() {
+        this.cardWidth = this.cards[0].offsetWidth / this.container.offsetWidth * 100;
+        this.build();
+      }
+      build() {
+        for (let i = 0; i < this.cards.length; i++) {
+          const x = i - this.centerIndex;
+          const scale = this.calcScale(x);
+          const scale2 = this.calcScale2(x);
+          const zIndex = -(Math.abs(i - this.centerIndex));
+          const leftPos = this.calcPos(x, scale2);
+          this.xScale[x] = this.cards[i];
+          this.updateCards(this.cards[i], { x, scale, leftPos, zIndex });
+        }
+      }
+      controller(e) {
+        const temp = { ...this.xScale };
+        if (e.keyCode === 39) {
+          for (let x in this.xScale) {
+            const newX = (parseInt(x) - 1 < -this.centerIndex) ? this.centerIndex : parseInt(x) - 1;
+            temp[newX] = this.xScale[x];
+          }
+        }
+        if (e.keyCode === 37) {
+          for (let x in this.xScale) {
+            const newX = (parseInt(x) + 1 > this.centerIndex) ? -this.centerIndex : parseInt(x) + 1;
+            temp[newX] = this.xScale[x];
+          }
+        }
+        this.xScale = temp;
+        for (let x in temp) {
+          const scale = this.calcScale(x),
+                scale2 = this.calcScale2(x),
+                leftPos = this.calcPos(x, scale2),
+                zIndex = -Math.abs(x);
+          this.updateCards(this.xScale[x], { x, scale, leftPos, zIndex });
+        }
+      }
+      calcPos(x, scale) {
+        if (x < 0) {
+          return (scale * 100 - this.cardWidth) / 2;
+        } else {
+          return 100 - (scale * 100 + this.cardWidth) / 2;
+        }
+      }
+      updateCards(card, data) {
+        if (data.x !== undefined) card.setAttribute("data-x", data.x);
+        if (data.scale !== undefined) {
+          card.style.transform = `scale(${data.scale})`;
+          card.style.opacity = data.scale === 0 ? 0 : 1;
+        }
+        if (data.leftPos !== undefined) card.style.left = `${data.leftPos}%`;
+        if (data.zIndex !== undefined) {
+          if (data.zIndex === 0) {
+            card.classList.add("highlight");
+          } else {
+            card.classList.remove("highlight");
+          }
+          card.style.zIndex = data.zIndex;
+        }
+      }
+      calcScale2(x) {
+        return x <= 0 ? 1 + x / 5 : 1 - x / 5;
+      }
+      calcScale(x) {
+        const val = 1 - 1 / 5 * Math.pow(x, 2);
+        return val <= 0 ? 0 : val;
+      }
+      checkOrdering(card, x, xDist) {
+        const original = parseInt(card.dataset.x);
+        const rounded = Math.round(xDist);
+        let newX = x;
+        if (x !== x + rounded) {
+          if (x + rounded > original && x + rounded > this.centerIndex) {
+            newX = ((x + rounded - 1) - this.centerIndex) - rounded + -this.centerIndex;
+          } else if (x + rounded < original && x + rounded < -this.centerIndex) {
+            newX = ((x + rounded + 1) + this.centerIndex) - rounded + this.centerIndex;
+          }
+          this.xScale[newX + rounded] = card;
+        }
+        this.updateCards(card, { zIndex: -Math.abs(newX + rounded) });
+        return newX;
+      }
+      moveCards(data) {
+        let xDist = data ? data.x / 250 : 0;
+        if (data === null) {
+          this.container.classList.add("smooth-return");
+          for (let x in this.xScale) {
+            this.updateCards(this.xScale[x], {
+              x,
+              zIndex: Math.abs(Math.abs(x) - this.centerIndex)
+            });
+          }
+        } else {
+          this.container.classList.remove("smooth-return");
+        }
+        for (let i = 0; i < this.cards.length; i++) {
+          const x = this.checkOrdering(this.cards[i], parseInt(this.cards[i].dataset.x), xDist);
+          const scale = this.calcScale(x + xDist);
+          const scale2 = this.calcScale2(x + xDist);
+          const leftPos = this.calcPos(x + xDist, scale2);
+          this.updateCards(this.cards[i], { scale, leftPos });
+        }
+      }
+    }
+  
+    new CardCarousel(cardsContainer, cardsController);
+  
+    // ✅ Fix: Prevent click after swipe (mistouch fix)
+    let isDragging = false;
+    let dragThreshold = 10;
+    let startX = 0, startY = 0;
+  
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('touchstart', e => {
+        isDragging = false;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      });
+  
+      card.addEventListener('touchmove', e => {
+        const dx = Math.abs(e.touches[0].clientX - startX);
+        const dy = Math.abs(e.touches[0].clientY - startY);
+        if (dx > dragThreshold || dy > dragThreshold) {
+          isDragging = true;
+        }
+      });
+  
+      card.addEventListener('touchend', e => {
+        if (isDragging) {
+          e.preventDefault();
+        }
+      });
+  
+      card.addEventListener('mousedown', e => {
+        isDragging = false;
+        startX = e.clientX;
+        startY = e.clientY;
+      });
+  
+      card.addEventListener('mousemove', e => {
+        const dx = Math.abs(e.clientX - startX);
+        const dy = Math.abs(e.clientY - startY);
+        if (dx > dragThreshold || dy > dragThreshold) {
+          isDragging = true;
+        }
+      });
+  
+      card.addEventListener('mouseup', e => {
+        if (isDragging) {
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
+  
 </body>
 </html>
