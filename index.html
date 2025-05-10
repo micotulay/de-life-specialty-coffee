@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" href="De life Logo 2.png">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,312 +9,157 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Nunito+Sans:ital,wght@0,400;0,700;0,800;1,300;1,700&family=Poppins:wght@400;500;600;700;800;900&display=swap');
         * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Poppins', sans-serif;
-    }
-    body {
-        opacity: 0;
-        animation: fadeIn 1.5s ease-in-out forwards;
-    }
-    @keyframes fadeIn {
-        from {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+        }
+        body {
             opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
         }
-        to {
-            opacity: 1;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-    }
-    section {
-        position: relative;
-        width: 100%;
-        min-height: 100vh;
-        padding: 30px 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: #292929;
-    }
-    header {
-        position: relative;
-        width: 100%;
-        padding: 10px 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    header .logo {
-        max-width: 300px;
-    }
-    header ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    header ul li {
-        list-style: none;
-    }
-    header ul li a {
-        color: #fff;
-        font-weight: 700;
-        margin: 0 15px;
-        text-decoration: none;
-        font-size: 1.5em;
-    }
-    header ul li a:hover {
-        color: #017143;
-    }
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        margin-top: 20px;
-    }
-    .container .text-box h2 {
-        color: #fff;
-        font-size: 2em;
-        font-weight: 300;
-        margin-bottom: 10px;
-    }
-    .container .text-box h2 span {
-        color: #017143;
-        font-size: 2.5em;
-        font-weight: 700;
-    }
-    .container .text-box p {
-        color: #fff;
-        font-size: 1em;
-        margin: 10px 0;
-    }
-    .container .text-box a {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 10px 20px;
-        background: #017143;
-        color: #fff;
-        border-radius: 30px;
-        font-weight: 500;
-        text-decoration: none;
-    }
-    .container .img-box img {
-        max-width: 250px;
-        margin-top: 20px;
-    }
-    .thumb {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-    }
-    .thumb li {
-        list-style: none;
-        margin: 0 10px;
-    }
-    .thumb li img {
-        max-width: 60px;
-        cursor: pointer;
-        transition: transform 0.3s;
-    }
-    .thumb li img:hover {
-        transform: scale(1.1);
-    }
-    .social {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        gap: 20px; /* Add spacing between icons */
-    }
-    .social {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        gap: 20px; /* Add spacing between icons */
-    }
-    .social li {
-        list-style: none;
-    }
-    .social li a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 50px; /* Set circular size */
-        height: 50px;
-        background-color: #017143; /* Circle background color */
-        border-radius: 50%; /* Make it circular */
-        transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    }
-    .social li a:hover {
-        transform: scale(1.2); /* Add hover scaling effect */
-        background-color: #0eb749; /* Change background color on hover */
-    }
-    .social li a img {
-        max-width: 24px; /* Adjust icon size */
-        height: auto;
-        filter: invert(1); /* Ensure icons are visible on dark backgrounds */
-    }
-    /* Media Queries for Tablets */
-    @media (max-width: 768px) {
-        header ul {
+        section {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 30px 10px;
+            display: flex;
             flex-direction: column;
-            align-items: left;
+            align-items: center;
+            background: #292929;
         }
-        header ul li a {
-            margin: 10px 0;
-            font-size: 0.9em;
+        .circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #017143;
+            clip-path: circle(50% at center);
+            z-index: -1;
         }
-        .container .text-box h2 {
-            font-size: 1.8em;
-        }
-        .container .text-box h2 span {
-            font-size: 2em;
-        }
-        .container .img-box img {
-            max-width: 200px;
-        }
-        .thumb li img {
-            max-width: 50px;
-        }
-        .social li a img {
-            max-width: 25px;
-        }
-    }
-
-    /* Media Queries for Mobile */
-    .hamburger {
-        display: none;
-        flex-direction: column;
-        cursor: pointer;
-        gap: 5px;
-    }
-    .hamburger span {
-        width: 30px;
-        height: 3px;
-        background-color: #fff;
-        transition: all 0.3s ease-in-out;
-    }
-    .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    @media (max-width: 480px) {
-        .hamburger {
-        display: none;
-        flex-direction: column;
-        cursor: pointer;
-        gap: 5px;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        z-index: 1000; /* Ensure it stays above other elements */
-    }
-    .hamburger span {
-        width: 30px;
-        height: 3px;
-        background-color: #fff;
-        transition: all 0.3s ease-in-out;
-    }
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 100%;
-        padding: 20px 0;
-        z-index: 999; /* Ensure it stays above other elements */
-    }
-    .nav-links.active {
-        display: flex;
-    }
-    .nav-links li {
-        margin: 10px 0;
-    }
         header {
-            flex-direction: column;
+            width: 90%;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
+        }
+        header .logo {
+            max-width: 300px;
         }
         header ul {
-            flex-direction: column;
-            align-items: center;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        header ul li {
+            list-style: none;
         }
         header ul li a {
-            margin: 5px 0;
-            font-size: 0.8em;
-        }
-        .container .text-box h2 {
+            color: #fff;
+            font-weight: 700;
+            margin: 0 15px;
+            text-decoration: none;
             font-size: 1.5em;
         }
+        header ul li a:hover {
+            color: #017143;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .container .text-box h2 {
+            color: #fff;
+            font-size: 2em;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
         .container .text-box h2 span {
-            font-size: 1.8em;
+            color: #017143;
+            font-size: 2.5em;
+            font-weight: 700;
         }
         .container .img-box img {
-            max-width: 150px;
+            max-width: 250px;
+            margin-top: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .thumb {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .thumb li {
+            list-style: none;
+            margin: 0 10px;
         }
         .thumb li img {
-            max-width: 40px;
+            max-width: 60px;
+            cursor: pointer;
+            transition: transform 0.3s;
         }
-        .social li a img {
-            max-width: 20px;
+        .thumb li img:hover {
+            transform: scale(1.1);
         }
-    }
-    @media (max-width: 480px) {
-        .hamburger {
-            display: flex;
-        }
-        header ul {
-            display: none; /* Hide the default navigation for mobile */
-        }
-    }
     </style>
 </head>
 <body>
     <section>
         <div class="circle"></div>
         <header>
-            <a href="#"><img src="De Life logo.png" class="logo" alt="De Life Specialty Logo" /></a>
-    <div class="hamburger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="About us.html">About us</a></li>
-    </ul>
+            <a href="#"><img src="De life Logo 2.png" class="logo" alt="De Life Specialty Logo" /></a>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="About us.html">About us</a></li>
+            </ul>
         </header>
         <div class="container">
             <div class="text-box">
-                <h2>Its not just a Coffee Its <br> <span>De Life</span></h2>
+                <h2>It's not just a Coffee, It's <br> <span>De Life</span></h2>
             </div>
             <div class="img-box">
-                <img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img1.png" class="starbucks" alt="" />
+                <!-- Fixed class name -->
+                <img src="thum1.png" class="main-image" alt="Main Coffee Image" />
             </div>
         </div>
         <ul class="thumb">
-            <li><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/thumb1.png" onclick="imgSlider('https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img1.png');changeCircleColor('#017143')" /></li>
-            <li><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/thumb2.png" onclick="imgSlider('https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img2.png');changeCircleColor('#0eb7495')" /></li>
-            <li><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/thumb3.png" onclick="imgSlider('https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/img3.png');changeCircleColor('#d752b1')" /></li>
-        </ul>
-        <ul class="social">
-            <li><a href="https://www.facebook.com/share/1EtZnXzBYN/" target="_blank"><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/facebook.png" alt="Facebook" /></a></li>
-            <li><a href="https://www.instagram.com/delife.specialtycoffee?igsh=MW0wM3Y5MDljd2UwMg==" target="_blank"><img src="https://raw.githubusercontent.com/farazc60/Project-Images/main/starbucks/instagram.png" alt="Instagram" /></a></li>
+            <li><img src="thum1.png" onclick="imgSlider('thum1.png'); changeCircleColor('#017143')" alt="Thumbnail 1" /></li>
+            <li><img src="thumb2.png" onclick="imgSlider('thumb2.png'); changeCircleColor('#0eb749')" alt="Thumbnail 2" /></li>
+            <li><img src="thumb3.png" onclick="imgSlider('thumb3.png'); changeCircleColor('#d752b1')" alt="Thumbnail 3" /></li>
         </ul>
     </section>
     <script>
-        function imgSlider(anything) {
-            document.querySelector('.starbucks').src = anything;
+        function imgSlider(imageSrc) {
+            document.querySelector('.main-image').src = imageSrc;
         }
+
         function changeCircleColor(color) {
             document.querySelector('.circle').style.background = color;
         }
+
         function toggleMenu() {
-        const navLinks = document.querySelector('.nav-links');
-        navLinks.classList.toggle('active');
-    }
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
