@@ -114,6 +114,122 @@
         .thumb li img:hover {
             transform: scale(1.1);
         }
+
+        /* Media Queries for Tablets */
+    @media (max-width: 768px) {
+        header ul {
+            flex-direction: column;
+            align-items: left;
+        }
+        header ul li a {
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+        .container .text-box h2 {
+            font-size: 1.8em;
+        }
+        .container .text-box h2 span {
+            font-size: 2em;
+        }
+        .container .img-box img {
+            max-width: 200px;
+        }
+        .thumb li img {
+            max-width: 50px;
+        }
+        .social li a img {
+            max-width: 25px;
+        }
+    }
+
+    /* Media Queries for Mobile */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+    }
+    .hamburger span {
+        width: 30px;
+        height: 3px;
+        background-color: #fff;
+        transition: all 0.3s ease-in-out;
+    }
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    @media (max-width: 480px) {
+        .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1000; /* Ensure it stays above other elements */
+    }
+    .hamburger span {
+        width: 30px;
+        height: 3px;
+        background-color: #fff;
+        transition: all 0.3s ease-in-out;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 20px 0;
+        z-index: 999; /* Ensure it stays above other elements */
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        margin: 10px 0;
+    }
+        header {
+            flex-direction: column;
+            align-items: center;
+        }
+        header ul {
+            flex-direction: column;
+            align-items: center;
+        }
+        header ul li a {
+            margin: 5px 0;
+            font-size: 0.8em;
+        }
+        .container .text-box h2 {
+            font-size: 1.5em;
+        }
+        .container .text-box h2 span {
+            font-size: 1.8em;
+        }
+        .container .img-box img {
+            max-width: 150px;
+        }
+        .thumb li img {
+            max-width: 40px;
+        }
+        .social li a img {
+            max-width: 20px;
+        }
+    }
+    @media (max-width: 480px) {
+        .hamburger {
+            display: flex;
+        }
+        header ul {
+            display: none; /* Hide the default navigation for mobile */
+        }
+    }
     </style>
 </head>
 <body>
