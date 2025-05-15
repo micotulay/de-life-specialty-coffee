@@ -21,6 +21,7 @@
     body {
         opacity: 0;
         animation: fadeIn 1.5s ease-in-out forwards;
+        height: max-content;
     }
     @keyframes fadeIn {
         from {
@@ -99,7 +100,8 @@
 
   .card .image-container,
   .card p {
-    pointer-events: none; /* Prevent child elements from intercepting clicks */
+    pointer-events: none;
+    margin-top: 15px ; /* Prevent child elements from intercepting clicks */
   }
 
     @media screen and (max-width: 340px) {
@@ -135,37 +137,45 @@
 
     .card.highlight {
       filter: brightness(1);
+      background-size: cover;
     }
 
     .card:nth-of-type(1) .image-container {
-      background-image: url("https://static.addtoany.com/images/dracaena-cinnabari.jpg");
+      background-image: url("DSC_9788.JPG");
     }
 
     .card:nth-of-type(2) .image-container {
-      background-image: url("https://www.w3schools.com/w3css/img_lights.jpg");
+      background-image: url("DSC_9788.JPG");
     }
 
     .card:nth-of-type(3) .image-container {
-      background-image: url("https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+      background-image: url("DSC_9788.JPG");
     }
 
     .card:nth-of-type(4) .image-container {
-      background-image: url("https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+      background-image: url("DSC_9788.JPG");
     }
 
     .card:nth-of-type(5) .image-container {
-      background-image: url("https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg");
+      background-image: url("DSC_9788.JPG");
     }
 
     .image-container {
-      width: 8em;
-      height: 8em;
+      width: 10em;
+      height: 10em;
       position: relative;
       background-size: cover;
       margin-bottom: 2em;
-      border-radius: 100%;
+      border-radius: 1em;
       padding: 1em;
       box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+
+    .card.highlight .image-container {
+      transform: scale(1.25);
+      z-index: 2;
+      transition: transform 0.3s;
     }
 
     .image-container::after {
@@ -173,8 +183,6 @@
       display: block;
       width: 120%;
       height: 120%;
-      border: solid 3px rgba(0,0,0,.1);
-      border-radius: 100%;
       position: absolute;
       top: calc(-10% - 3px);
       left: calc(-10% - 3px);
@@ -223,7 +231,7 @@
       </a>
       <a href="page5.html" class="card" id="5">
         <div class="image-container"></div>
-        <p>5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, explicabo!</p>
+        <p>Francis Leo × Alyssa Ashley</p>
       </a>
     </div>
     <a href="#" class="visuallyhidden card-controller">Carousel controller</a>
@@ -421,7 +429,7 @@
   
     new CardCarousel(cardsContainer, cardsController);
   
-    // ✅ Fix: Prevent click after swipe (mistouch fix)
+    // Fix: Prevent click after swipe (mistouch fix)
     let isDragging = false;
     let dragThreshold = 10;
     let startX = 0, startY = 0;

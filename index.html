@@ -55,7 +55,8 @@
             align-items: center;
         }
         header .logo {
-            max-width: 300px;
+            max-width: 150px;
+            margin-top: 20px;
         }
         header ul {
             display: flex;
@@ -70,9 +71,10 @@
             margin: 0 15px;
             text-decoration: none;
             font-size: 1.5em;
+            transition: all 0.3s ease-in-out;
         }
         header ul li a:hover {
-            color: #017143;
+            color: rgba(1, 113, 67, 0.9);
         }
         .container {
             display: flex;
@@ -91,6 +93,7 @@
             color: #017143;
             font-size: 2.5em;
             font-weight: 700;
+            font-family: 'Times New Roman', Times, serif;
         }
         .container .img-box img {
             max-width: 250px;
@@ -115,121 +118,126 @@
             transform: scale(1.1);
         }
 
-        /* Media Queries for Tablets */
-    @media (max-width: 768px) {
-        header ul {
-            flex-direction: column;
-            align-items: left;
-        }
-        header ul li a {
-            margin: 10px 0;
-            font-size: 0.9em;
-        }
-        .container .text-box h2 {
-            font-size: 1.8em;
-        }
-        .container .text-box h2 span {
-            font-size: 2em;
-        }
-        .container .img-box img {
-            max-width: 200px;
-        }
-        .thumb li img {
-            max-width: 50px;
-        }
-        .social li a img {
-            max-width: 25px;
-        }
-    }
-
-    /* Media Queries for Mobile */
-    .hamburger {
-        display: none;
-        flex-direction: column;
-        cursor: pointer;
-        gap: 5px;
-    }
-    .hamburger span {
-        width: 30px;
-        height: 3px;
-        background-color: #fff;
-        transition: all 0.3s ease-in-out;
-    }
-    .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    @media (max-width: 480px) {
         .hamburger {
-        display: none;
-        flex-direction: column;
-        cursor: pointer;
-        gap: 5px;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        z-index: 1000; /* Ensure it stays above other elements */
-    }
-    .hamburger span {
-        width: 30px;
-        height: 3px;
-        background-color: #fff;
-        transition: all 0.3s ease-in-out;
-    }
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 100%;
-        padding: 20px 0;
-        z-index: 999; /* Ensure it stays above other elements */
-    }
-    .nav-links.active {
-        display: flex;
-    }
-    .nav-links li {
-        margin: 10px 0;
-    }
-        header {
+            display: none;
             flex-direction: column;
-            align-items: center;
+            cursor: pointer;
+            gap: 5px;
         }
-        header ul {
-            flex-direction: column;
-            align-items: center;
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            transition: all 0.3s ease-in-out;
         }
-        header ul li a {
-            margin: 5px 0;
-            font-size: 0.8em;
-        }
-        .container .text-box h2 {
-            font-size: 1.5em;
-        }
-        .container .text-box h2 span {
-            font-size: 1.8em;
-        }
-        .container .img-box img {
-            max-width: 150px;
-        }
-        .thumb li img {
-            max-width: 40px;
-        }
-        .social li a img {
-            max-width: 20px;
-        }
-    }
-    @media (max-width: 480px) {
-        .hamburger {
+        .nav-links {
             display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
-        header ul {
-            display: none; /* Hide the default navigation for mobile */
+
+        /* Media Queries for Tablets */
+        @media (max-width: 768px) {
+            header ul {
+                flex-direction: column;
+                align-items: left;
+            }
+            header ul li a {
+                margin: 10px 0;
+                font-size: 0.9em;
+            }
+            .container .text-box h2 {
+                font-size: 1.8em;
+            }
+            .container .text-box h2 span {
+                font-size: 2em;
+            }
+            .container .img-box img {
+                max-width: 200px;
+            }
+            .thumb li img {
+                max-width: 50px;
+            }
+            .social li a img {
+                max-width: 25px;
+            }
         }
-    }
+
+        /* Media Queries for Mobile */
+        @media (max-width: 480px) {
+            .hamburger {
+                display: flex;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                z-index: 1000;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                padding: 20px 0;
+                z-index: 999;
+            }
+            .nav-links.active {
+                display: flex;
+                background-color: rgba(1, 113, 67, 0.5);
+                backdrop-filter: blur(8px);
+            }
+            .nav-links li {
+                margin: 10px 0;
+            }
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+            header ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            header ul li a {
+                margin: 5px 0;
+                font-size: 0.8em;
+            }
+            .container .text-box h2 {
+                font-size: 1.5em;
+            }
+            .container .text-box h2 span {
+                font-size: 1.8em;
+            }
+            .container .img-box img {
+                max-width: 150px;
+            }
+            .thumb li img {
+                max-width: 40px;
+            }
+            .social li a img {
+                max-width: 20px;
+            }
+
+            .nav-links li a {
+                color: #fff;
+                text-decoration: none;
+            }
+
+            .nav-links li a:hover,
+            .nav-links li a.active {
+                color: rgba(11, 192, 117, 0.9);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hamburger {
+                display: flex;
+            }
+            header ul {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -253,7 +261,6 @@
                 <h2>It's not just a Coffee, It's <br> <span>De Life</span></h2>
             </div>
             <div class="img-box">
-                <!-- Fixed class name -->
                 <img src="thum1.png" class="main-image" alt="Main Coffee Image" />
             </div>
         </div>
@@ -263,6 +270,7 @@
             <li><img src="thumb3.png" onclick="imgSlider('thumb3.png'); changeCircleColor('#d752b1')" alt="Thumbnail 3" /></li>
         </ul>
     </section>
+
     <script>
         function imgSlider(imageSrc) {
             document.querySelector('.main-image').src = imageSrc;
@@ -276,6 +284,14 @@
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
         }
+
+        const navItems = document.querySelectorAll('.nav-links li a');
+        navItems.forEach(link => {
+            link.addEventListener('click', () => {
+                navItems.forEach(item => item.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
     </script>
 </body>
 </html>
