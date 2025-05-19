@@ -17,12 +17,14 @@
         html, body {
             margin: 0;
             padding: 0;
-            overflow: hidden;
             height: 100%;
+            width: 100%;
         }
         body {
             opacity: 0;
             animation: fadeIn 1.5s ease-in-out forwards;
+            min-height: 100vh;
+            min-width: 100vw;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -30,23 +32,25 @@
         }
         section {
             position: relative;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            min-height: 100vh;
             padding: 30px 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: #292929;
+            overflow: hidden;
         }
-        .circle {
+        section::before {
+            content: "";
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             width: 100%;
             height: 100%;
-            background: #017143;
-            clip-path: circle(50% at center);
-            z-index: -1;
+            background: url('images/background.jpg') center center/cover no-repeat;
+            filter: blur(3px);
+            opacity: 1;
+            z-index: -2;
+            pointer-events: none;
         }
         header {
             width: 90%;
@@ -55,8 +59,9 @@
             align-items: center;
         }
         header .logo {
-            max-width: 150px;
-            margin-top: 20px;
+            max-width: 200px;
+            margin-top: 0px;
+            margin-left: 10px;
         }
         header ul {
             display: flex;
@@ -66,7 +71,7 @@
             list-style: none;
         }
         header ul li a {
-            color: #fff;
+            color: #ffffff;
             font-weight: 700;
             margin: 0 15px;
             text-decoration: none;
@@ -84,8 +89,8 @@
             margin-top: 20px;
         }
         .container .text-box h2 {
-            color: #fff;
-            font-size: 2em;
+            color: #ffcc80;
+            font-size: 3em;
             font-weight: 300;
             margin-bottom: 10px;
         }
@@ -103,14 +108,14 @@
         .thumb {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 40px;
         }
         .thumb li {
             list-style: none;
-            margin: 0 10px;
+            margin: 0 20px;
         }
         .thumb li img {
-            max-width: 60px;
+            max-width: 120px;
             cursor: pointer;
             transition: transform 0.3s;
         }
@@ -156,13 +161,15 @@
                 max-width: 200px;
             }
             .thumb li img {
-                max-width: 50px;
+                max-width: 100px;
             }
             .social li a img {
-                max-width: 25px;
+                max-width: 50px;
             }
-        }
-
+            .circle {
+                display: none;
+            }
+    }
         /* Media Queries for Mobile */
         @media (max-width: 480px) {
             .hamburger {
@@ -204,24 +211,27 @@
                 font-size: 0.8em;
             }
             .container .text-box h2 {
-                font-size: 1.5em;
+                font-size: 2em;
             }
             .container .text-box h2 span {
                 font-size: 1.8em;
             }
             .container .img-box img {
-                max-width: 150px;
+                max-width: 200px;
             }
             .thumb li img {
-                max-width: 40px;
+                max-width: 100px;
             }
             .social li a img {
-                max-width: 20px;
+                max-width: 50px;
             }
 
             .nav-links li a {
                 color: #fff;
                 text-decoration: none;
+            }
+            .circle {
+                display: none;
             }
 
             .nav-links li a:hover,
@@ -274,10 +284,6 @@
     <script>
         function imgSlider(imageSrc) {
             document.querySelector('.main-image').src = imageSrc;
-        }
-
-        function changeCircleColor(color) {
-            document.querySelector('.circle').style.background = color;
         }
 
         function toggleMenu() {

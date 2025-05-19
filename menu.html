@@ -3,479 +3,331 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Menu</title>
-  <link rel="website icon" type="png"
-  href="De life Logo 2.png">
+  <title>MENU</title>
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-
-    html {
-      font-family: system-ui;
-      background: #292929;
+      box-sizing: border-box;
     }
 
     body {
-        opacity: 0;
-        animation: fadeIn 1.5s ease-in-out forwards;
-        height: max-content;
-    }
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
+      background-color: #000;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
     }
 
-    .visuallyhidden {
-      position: absolute;
-      z-index: -1;
-      right: 0;
-      opacity: 0;
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: #000;
+      position: relative;
+      z-index: 10;
     }
 
-    h1 {
-      color: white;
-      text-align: center;
-      margin-top: 1em;
+    .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
     }
 
     nav {
-      background: #333;
-      padding: 1em;
       display: flex;
-      justify-content: center;
       align-items: center;
-      gap: 2em;
+      transition: max-height 0.3s;
     }
 
     nav a {
+      margin-left: 20px;
       color: white;
       text-decoration: none;
-      font-size: 1.2em;
-      transition: color 0.3s;
+      font-weight: bold;
+      font-size: 1.5rem;
+      transition: color 0.2s;
     }
 
     nav a:hover {
-      color: #017143;
+      color: #ffe082;
     }
 
-    .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Full viewport height */
-    overflow: hidden;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.1);
-  }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      z-index: 20;
+    }
 
-  .card-carousel {
-    --card-width: 80%;
-    --card-max-width: 280px;
-    --card-height: 350px;
-    --carousel-min-width: 600px;
-    z-index: 1;
-    position: relative;
-    width: 100%;
-    height: var(--card-height);
-    min-width: var(--carousel-min-width);
-    transition: filter 0.3s ease;
-  }
+    .hamburger span {
+      height: 4px;
+      width: 28px;
+      background: #fff;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+      display: block;
+    }
 
-  .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none; /* Remove underline from links */
-    color: inherit; /* Inherit text color */
-  }
+    main {
+      text-align: center;
+      padding: 40px 20px;
+    }
 
-  .card .image-container,
-  .card p {
-    pointer-events: none;
-    margin-top: 15px ; /* Prevent child elements from intercepting clicks */
-  }
+    main h1 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
 
-    @media screen and (max-width: 340px) {
-      .card-carousel {
-        margin-left: calc((100vw - var(--carousel-min-width) - 40px) / 2)
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      justify-items: center;
+    } 
+
+    .card {
+      background: #111;
+      padding: 5px;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: 
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      text-decoration: none;
+      display: block;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      /* Pop-in animation */
+      opacity: 0;
+      transform: scale(0.85) translateY(40px);
+      animation: popIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes popIn {
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
       }
     }
 
-    .card-carousel.smooth-return {
-      transition: all .2s ease;
+    .card:hover {
+      transform: translateY(-10px) scale(1.07);
+      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.35), 0 0 16px #ffe082;
     }
 
-    .card-carousel .card {
-      background: whitesmoke;
-      width: var(--card-width);
-      max-width: var(--card-max-width);
-      text-align: center;
-      padding: 1em;
-      min-width: 250px;
-      height: var(--card-height);
-      position: absolute;
-      margin: 0 auto;
-      color: rgba(0,0,0,.5);
-      transition: inherit;
-      box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.3);
-      border-radius: 1em;
-      filter: brightness(.9);
+    .card-content {
+      position: relative;
+      width: 250px;
+      height: 300px;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
     }
 
-    .card.highlight {
-      filter: brightness(1);
-      background-size: cover;
+    .card-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      filter: blur(2px) brightness(0.95);
+      transition: filter 0.35s cubic-bezier(0.22, 1, 0.36, 1), 
+                  box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .card:nth-of-type(1) .image-container {
-      background-image: url("DSC_9788.JPG");
+    .card:hover .card-content img {
+      filter: blur(1.2px) brightness(1.08);
+      box-shadow: 0 0 24px #ffe08280;
     }
 
-    .card:nth-of-type(2) .image-container {
-      background-image: url("DSC_9788.JPG");
-    }
-
-    .card:nth-of-type(3) .image-container {
-      background-image: url("DSC_9788.JPG");
-    }
-
-    .card:nth-of-type(4) .image-container {
-      background-image: url("DSC_9788.JPG");
-    }
-
-    .card:nth-of-type(5) .image-container {
-      background-image: url("DSC_9788.JPG");
-    }
-
-    .image-container {
-      width: 10em;
-      height: 10em;
-      position: relative;
-      background-size: cover;
-      margin-bottom: 2em;
-      border-radius: 1em;
-      padding: 1em;
-      box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.3);
-      transition: transform 0.3s;
-    }
-
-    .card.highlight .image-container {
-      transform: scale(1.25);
-      z-index: 2;
-      transition: transform 0.3s;
-    }
-
-    .image-container::after {
-      content: "";
-      display: block;
-      width: 120%;
-      height: 120%;
+    .card-text {
       position: absolute;
-      top: calc(-10% - 3px);
-      left: calc(-10% - 3px);
-    }
-
-    h2 {
-      padding: 1em;
-      margin-top: 1em;
-      background: rgba(0,0,0,.3);
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: bold;
       text-align: center;
-      color: white;
-      border-radius: .2em;
-      display: inline-block;
-      transform: translateX(calc((100vw - 100%) / 2));
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-shadow: 0 2px 8px #000;
+      pointer-events: none;
+      width: 90%;
+      letter-spacing: 1px;
     }
 
-    h2 a {
-      color: #f5b916;
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Media Queries */
+    @media (max-width: 900px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .card-content {
+        width: 180px;
+        height: 220px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        padding: 16px 8px;
+        text-align: center;
+        align-items: flex-start;
+      }
+      .logo {
+        margin-bottom: 8px;
+      }
+      .hamburger {
+        display: flex;
+        position: absolute;
+        right: 16px;
+        top: 18px;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        background: #111;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      }
+      nav.open {
+        max-height: 300px;
+        padding-bottom: 12px;
+      }
+      nav a {
+        margin: 12px 0 0 16px;
+        font-size: 1.1rem;
+        display: block;
+      }
+      main {
+        padding: 20px 5px;
+      }
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .card-content {
+        width: 98vw;
+        max-width: 340px;
+        height: 180px;
+      }
+      .card-text {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="menu.html">Menu</a>
-    <a href="About us.html">About Us</a>
-  </nav>
-
-  <div class="container">
-    <div class="card-carousel">
-      <a href="iced-hot-coffee.html" class="card" id="1">
-        <div class="image-container"></div>
-        <p>COFFEE</p>
-      </a>
-      <a href="non-coffee.html" class="card" id="2">
-        <div class="image-container"></div>
-        <p>NON-COFFEE</p>
-      </a>
-      <a href="refreshers.html" class="card" id="3">
-        <div class="image-container"></div>
-        <p>REFRESHERS</p>
-      </a>
-      <a href="others.html" class="card" id="4">
-        <div class="image-container"></div>
-        <p>OTHERS</p>
-      </a>
-      <a href="page5.html" class="card" id="5">
-        <div class="image-container"></div>
-        <p>Francis Leo × Alyssa Ashley</p>
-      </a>
+  <header>
+    <div class="logo">DE LIFE</div>
+    <div class="hamburger" id="hamburger" aria-label="Open navigation" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-    <a href="#" class="visuallyhidden card-controller">Carousel controller</a>
-  </div>
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="About us.html">About Us</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Our Menu</h1>
+    <section class="portfolio-grid">
+      <a href="iced-hot-coffee.html" class="card" style="animation-delay: 0.05s;">
+        <div class="card-content">
+          <img src="menu/1.JPG" alt="Coffee" loading="lazy" />
+          <span class="card-text">Iced & Hot Coffee</span>
+        </div>
+      </a>
+      <a href="non-coffee.html" class="card" style="animation-delay: 0.10s;">
+        <div class="card-content">
+          <img src="menu/2.JPG" alt="NOn-Coffee" loading="lazy" />
+          <span class="card-text">Non-Coffee</span>
+        </div>
+      </a>
+      <a href="refreshers.html" class="card" style="animation-delay: 0.15s;">
+        <div class="card-content">
+          <img src="menu/3.JPG" alt="Refreshers" loading="lazy" />
+          <span class="card-text">Refreshers</span>
+        </div>
+      </a>
+      <a href="others.html" class="card" style="animation-delay: 0.20s;">
+        <div class="card-content">
+          <img src="menu/4.JPG" alt="Portfolio Image 4" loading="lazy" />
+          <span class="card-text">Others</span>
+        </div>
+      </a>
+      <a href="menu5.html" class="card" style="animation-delay: 0.25s;">
+        <div class="card-content">
+          <img src="your-image5.jpg" alt="Portfolio Image 5" loading="lazy" />
+          <span class="card-text">Menu 5</span>
+        </div>
+      </a>
+      <a href="menu6.html" class="card" style="animation-delay: 0.30s;">
+        <div class="card-content">
+          <img src="your-image6.jpg" alt="Portfolio Image 6" loading="lazy" />
+          <span class="card-text">Menu 6</span>
+        </div>
+      </a>
+      <a href="menu7.html" class="card" style="animation-delay: 0.35s;">
+        <div class="card-content">
+          <img src="your-image7.jpg" alt="Portfolio Image 7" loading="lazy" />
+          <span class="card-text">Menu 7</span>
+        </div>
+      </a>
+      <a href="menu8.html" class="card" style="animation-delay: 0.40s;">
+        <div class="card-content">
+          <img src="your-image8.jpg" alt="Portfolio Image 8" loading="lazy" />
+          <span class="card-text">Menu 8</span>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 DE LIFE SPECIALTY COFFEE. All rights reserved.
+  </footer>
 
   <script>
-    // Existing carousel logic
-    const cardsContainer = document.querySelector(".card-carousel");
-    const cardsController = document.querySelector(".card-carousel + .card-controller");
-  
-    class DraggingEvent {
-      constructor(target = undefined) {
-        this.target = target;
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+    // Optional: close nav when clicking outside or on a link (mobile)
+    document.addEventListener('click', (e) => {
+      if (
+        window.innerWidth <= 600 &&
+        nav.classList.contains('open') &&
+        !nav.contains(e.target) &&
+        e.target !== hamburger &&
+        !hamburger.contains(e.target)
+      ) {
+        nav.classList.remove('open');
       }
-      event(callback) {
-        let handler;
-        this.target.addEventListener("mousedown", e => {
-          e.preventDefault();
-          handler = callback(e);
-          window.addEventListener("mousemove", handler);
-          document.addEventListener("mouseleave", clearDraggingEvent);
-          window.addEventListener("mouseup", clearDraggingEvent);
-          function clearDraggingEvent() {
-            window.removeEventListener("mousemove", handler);
-            window.removeEventListener("mouseup", clearDraggingEvent);
-            document.removeEventListener("mouseleave", clearDraggingEvent);
-            handler(null);
-          }
-        });
-        this.target.addEventListener("touchstart", e => {
-          handler = callback(e);
-          window.addEventListener("touchmove", handler);
-          window.addEventListener("touchend", clearDraggingEvent);
-          document.body.addEventListener("mouseleave", clearDraggingEvent);
-          function clearDraggingEvent() {
-            window.removeEventListener("touchmove", handler);
-            window.removeEventListener("touchend", clearDraggingEvent);
-            handler(null);
-          }
-        });
+    });
+    // Optional: allow keyboard access
+    hamburger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        nav.classList.toggle('open');
       }
-      getDistance(callback) {
-        function distanceInit(e1) {
-          let startingX, startingY;
-          if ("touches" in e1) {
-            startingX = e1.touches[0].clientX;
-            startingY = e1.touches[0].clientY;
-          } else {
-            startingX = e1.clientX;
-            startingY = e1.clientY;
-          }
-          return function(e2) {
-            if (e2 === null) {
-              return callback(null);
-            } else {
-              if ("touches" in e2) {
-                return callback({
-                  x: e2.touches[0].clientX - startingX,
-                  y: e2.touches[0].clientY - startingY
-                });
-              } else {
-                return callback({
-                  x: e2.clientX - startingX,
-                  y: e2.clientY - startingY
-                });
-              }
-            }
-          };
-        }
-        this.event(distanceInit);
-      }
-    }
-  
-    class CardCarousel extends DraggingEvent {
-      constructor(container, controller = undefined) {
-        super(container);
-        this.container = container;
-        this.controllerElement = controller;
-        this.cards = container.querySelectorAll(".card");
-        this.centerIndex = (this.cards.length - 1) / 2;
-        this.cardWidth = this.cards[0].offsetWidth / this.container.offsetWidth * 100;
-        this.xScale = {};
-        window.addEventListener("resize", this.updateCardWidth.bind(this));
-        if (this.controllerElement) {
-          this.controllerElement.addEventListener("keydown", this.controller.bind(this));
-        }
-        this.build();
-        super.getDistance(this.moveCards.bind(this));
-      }
-      updateCardWidth() {
-        this.cardWidth = this.cards[0].offsetWidth / this.container.offsetWidth * 100;
-        this.build();
-      }
-      build() {
-        for (let i = 0; i < this.cards.length; i++) {
-          const x = i - this.centerIndex;
-          const scale = this.calcScale(x);
-          const scale2 = this.calcScale2(x);
-          const zIndex = -(Math.abs(i - this.centerIndex));
-          const leftPos = this.calcPos(x, scale2);
-          this.xScale[x] = this.cards[i];
-          this.updateCards(this.cards[i], { x, scale, leftPos, zIndex });
-        }
-      }
-      controller(e) {
-        const temp = { ...this.xScale };
-        if (e.keyCode === 39) {
-          for (let x in this.xScale) {
-            const newX = (parseInt(x) - 1 < -this.centerIndex) ? this.centerIndex : parseInt(x) - 1;
-            temp[newX] = this.xScale[x];
-          }
-        }
-        if (e.keyCode === 37) {
-          for (let x in this.xScale) {
-            const newX = (parseInt(x) + 1 > this.centerIndex) ? -this.centerIndex : parseInt(x) + 1;
-            temp[newX] = this.xScale[x];
-          }
-        }
-        this.xScale = temp;
-        for (let x in temp) {
-          const scale = this.calcScale(x),
-                scale2 = this.calcScale2(x),
-                leftPos = this.calcPos(x, scale2),
-                zIndex = -Math.abs(x);
-          this.updateCards(this.xScale[x], { x, scale, leftPos, zIndex });
-        }
-      }
-      calcPos(x, scale) {
-        if (x < 0) {
-          return (scale * 100 - this.cardWidth) / 2;
-        } else {
-          return 100 - (scale * 100 + this.cardWidth) / 2;
-        }
-      }
-      updateCards(card, data) {
-        if (data.x !== undefined) card.setAttribute("data-x", data.x);
-        if (data.scale !== undefined) {
-          card.style.transform = `scale(${data.scale})`;
-          card.style.opacity = data.scale === 0 ? 0 : 1;
-        }
-        if (data.leftPos !== undefined) card.style.left = `${data.leftPos}%`;
-        if (data.zIndex !== undefined) {
-          if (data.zIndex === 0) {
-            card.classList.add("highlight");
-          } else {
-            card.classList.remove("highlight");
-          }
-          card.style.zIndex = data.zIndex;
-        }
-      }
-      calcScale2(x) {
-        return x <= 0 ? 1 + x / 5 : 1 - x / 5;
-      }
-      calcScale(x) {
-        const val = 1 - 1 / 5 * Math.pow(x, 2);
-        return val <= 0 ? 0 : val;
-      }
-      checkOrdering(card, x, xDist) {
-        const original = parseInt(card.dataset.x);
-        const rounded = Math.round(xDist);
-        let newX = x;
-        if (x !== x + rounded) {
-          if (x + rounded > original && x + rounded > this.centerIndex) {
-            newX = ((x + rounded - 1) - this.centerIndex) - rounded + -this.centerIndex;
-          } else if (x + rounded < original && x + rounded < -this.centerIndex) {
-            newX = ((x + rounded + 1) + this.centerIndex) - rounded + this.centerIndex;
-          }
-          this.xScale[newX + rounded] = card;
-        }
-        this.updateCards(card, { zIndex: -Math.abs(newX + rounded) });
-        return newX;
-      }
-      moveCards(data) {
-        let xDist = data ? data.x / 250 : 0;
-        if (data === null) {
-          this.container.classList.add("smooth-return");
-          for (let x in this.xScale) {
-            this.updateCards(this.xScale[x], {
-              x,
-              zIndex: Math.abs(Math.abs(x) - this.centerIndex)
-            });
-          }
-        } else {
-          this.container.classList.remove("smooth-return");
-        }
-        for (let i = 0; i < this.cards.length; i++) {
-          const x = this.checkOrdering(this.cards[i], parseInt(this.cards[i].dataset.x), xDist);
-          const scale = this.calcScale(x + xDist);
-          const scale2 = this.calcScale2(x + xDist);
-          const leftPos = this.calcPos(x + xDist, scale2);
-          this.updateCards(this.cards[i], { scale, leftPos });
-        }
-      }
-    }
-  
-    new CardCarousel(cardsContainer, cardsController);
-  
-    // Fix: Prevent click after swipe (mistouch fix)
-    let isDragging = false;
-    let dragThreshold = 10;
-    let startX = 0, startY = 0;
-  
-    document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('touchstart', e => {
-        isDragging = false;
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-      });
-  
-      card.addEventListener('touchmove', e => {
-        const dx = Math.abs(e.touches[0].clientX - startX);
-        const dy = Math.abs(e.touches[0].clientY - startY);
-        if (dx > dragThreshold || dy > dragThreshold) {
-          isDragging = true;
-        }
-      });
-  
-      card.addEventListener('touchend', e => {
-        if (isDragging) {
-          e.preventDefault();
-        }
-      });
-  
-      card.addEventListener('mousedown', e => {
-        isDragging = false;
-        startX = e.clientX;
-        startY = e.clientY;
-      });
-  
-      card.addEventListener('mousemove', e => {
-        const dx = Math.abs(e.clientX - startX);
-        const dy = Math.abs(e.clientY - startY);
-        if (dx > dragThreshold || dy > dragThreshold) {
-          isDragging = true;
-        }
-      });
-  
-      card.addEventListener('mouseup', e => {
-        if (isDragging) {
-          e.preventDefault();
-        }
-      });
     });
   </script>
-  
 </body>
 </html>
