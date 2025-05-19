@@ -15,16 +15,39 @@
       background-color: #000;
       color: #fff;
       font-family: 'Arial', sans-serif;
+      background-image: url('menu/main.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
-
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image: url('menu/main.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      filter: blur(4px) brightness(0.7);
+      pointer-events: none;
+    }
+    body > * {
+      position: relative;
+      z-index: 1;
+    }
+    
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 40px;
-      background: #000;
       position: relative;
       z-index: 10;
+      background: #000000b0;
+      backdrop-filter: blur(2px);
     }
 
     .logo {
@@ -84,7 +107,7 @@
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 50px;
       justify-items: center;
     } 
 
@@ -127,8 +150,8 @@
     }
 
     .card-content img {
-      width: 100%;
-      height: 100%;
+      width: 110%;
+      height: 110%;
       object-fit: cover;
       border-radius: 12px;
       filter: blur(0.5px) brightness(0.95);
@@ -152,7 +175,7 @@
       transform: translate(-50%, -50%);
       text-shadow: 0 2px 8px #000;
       pointer-events: none;
-      width: 90%;
+      width: 100%;
       letter-spacing: 1px;
     }
 
@@ -161,6 +184,31 @@
       padding: 20px;
       color: #ccc;
       font-size: 0.9rem;
+    }
+
+    /* Custom Scrollbar Styles */
+    ::-webkit-scrollbar {
+      width: 12px;
+      background: #181818;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(120deg, #ffe082 40%, #bfa040 100%);
+      border-radius: 8px;
+      border: 2px solid #181818;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(120deg, #ffe082 70%, #bfa040 100%);
+    }
+
+    ::-webkit-scrollbar-corner {
+      background: #181818;
+    }
+
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: #ffe082 #181818;
     }
 
     /* Responsive Media Queries */
@@ -272,28 +320,40 @@
           <span class="card-text">Others</span>
         </div>
       </a>
-      <a href="menu5.html" class="card" style="animation-delay: 0.25s;">
+      <a href="frappe/shake.html" class="card" style="animation-delay: 0.25s;">
         <div class="card-content">
-          <img src="your-image5.jpg" alt="Portfolio Image 5" loading="lazy" />
-          <span class="card-text">Menu 5</span>
+          <img src="menu/5.JPG" alt="Portfolio Image 5" loading="lazy" />
+          <span class="card-text">Frappe and Shake</span>
         </div>
       </a>
-      <a href="menu6.html" class="card" style="animation-delay: 0.30s;">
+      <a href="rice bowls.html" class="card" style="animation-delay: 0.30s;">
         <div class="card-content">
-          <img src="your-image6.jpg" alt="Portfolio Image 6" loading="lazy" />
-          <span class="card-text">Menu 6</span>
+          <img src="menu/6.JPG" alt="Portfolio Image 6" loading="lazy" />
+          <span class="card-text">Rice Bowls</span>
         </div>
       </a>
-      <a href="menu7.html" class="card" style="animation-delay: 0.35s;">
+      <a href="pasta.html" class="card" style="animation-delay: 0.35s;">
         <div class="card-content">
-          <img src="your-image7.jpg" alt="Portfolio Image 7" loading="lazy" />
-          <span class="card-text">Menu 7</span>
+          <img src="menu/7.JPG" alt="Portfolio Image 7" loading="lazy" />
+          <span class="card-text">Pasta</span>
         </div>
       </a>
-      <a href="menu8.html" class="card" style="animation-delay: 0.40s;">
+      <a href="sandwiches.html" class="card" style="animation-delay: 0.40s;">
+        <div class="card-content">
+          <img src="menu/8.JPG" alt="Portfolio Image 8" loading="lazy" />
+          <span class="card-text">Sandwiches</span>
+        </div>
+      </a>
+      <a href="snacks.html" class="card" style="animation-delay: 0.40s;">
+        <div class="card-content">
+          <img src="menu/9.JPG" alt="Portfolio Image 8" loading="lazy" />
+          <span class="card-text">Snacks</span>
+        </div>
+      </a>
+      <a href="add-ons.html" class="card" style="animation-delay: 0.40s;">
         <div class="card-content">
           <img src="your-image8.jpg" alt="Portfolio Image 8" loading="lazy" />
-          <span class="card-text">Menu 8</span>
+          <span class="card-text">Add-Ons</span>
         </div>
       </a>
     </section>
@@ -304,13 +364,11 @@
   </footer>
 
   <script>
-    // Hamburger menu toggle
     const hamburger = document.getElementById('hamburger');
     const nav = document.getElementById('nav');
     hamburger.addEventListener('click', () => {
       nav.classList.toggle('open');
     });
-    // Optional: close nav when clicking outside or on a link (mobile)
     document.addEventListener('click', (e) => {
       if (
         window.innerWidth <= 600 &&
@@ -322,7 +380,6 @@
         nav.classList.remove('open');
       }
     });
-    // Optional: allow keyboard access
     hamburger.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         nav.classList.toggle('open');
