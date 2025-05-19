@@ -5,25 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Non Coffee Menu</title>
-    <style>
+     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-        }
-
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    position: relative; /* Add this for stacking context */
+    overflow-x: hidden;
+}
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('menu/2.JPG') center center/cover no-repeat;
+    filter: blur(3px);
+    opacity: 1;
+    z-index: -1;
+    pointer-events: none;
+}
         h1 {
             text-align: center;
             margin: 20px 0;
             font-size: 2.5rem;
-            color: #6c757d;
+            color:  #ffe082;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #495057;
+            margin-bottom: 10px;
         }
 
         ul {
@@ -37,17 +55,21 @@
             max-width: 1200px;
         }
 
-        li {
-            background-color: #ffffff;
-            padding: 20px;
+         li {
+            background-color: #00000058;
+            padding: 10px 5px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             text-align: center;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #495057;
+            font-size: 1rem;
             transition: transform 0.2s, box-shadow 0.2s;
+            height: 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            row-gap: 50px;
         }
+
 
         li:hover {
             transform: translateY(-5px);
@@ -70,7 +92,7 @@
             left: 20px;
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #007bff;
+            background-color: rgba(11, 192, 117, 0.9);
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -79,9 +101,10 @@
         }
 
         .back-button:hover {
-            background-color: #0056b3;
+            background-color: rgba(11, 192, 117, 0.9);
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
@@ -92,8 +115,8 @@
             }
 
             li {
-                padding: 15px;
-                font-size: 1rem;
+                font-size: 0.9rem;
+                padding: 15px 10px;
             }
 
             .back-button {
@@ -104,17 +127,17 @@
 
         @media (max-width: 480px) {
             h1 {
-                font-size: 1.8rem;
+                font-size: 1.3rem;
             }
 
             ul {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 10px;
+                gap: 30px;
             }
 
             li {
-                padding: 10px;
-                font-size: 0.9rem;
+                font-size: 0.8rem;
+                padding: 10px 8px;
             }
 
             .back-button {

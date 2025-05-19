@@ -6,125 +6,159 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Others Menu</title>
     <style>
+        html, body {
+            height: 100%;
+        }
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
+            color: #fff;
+            min-height: 100vh;
+            width: 100vw;
+            position: relative;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* center vertically */
+            align-items: center;     /* center horizontally */
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('menu/4.JPG') center center/cover no-repeat;
+            filter: blur(3px);
+            opacity: 1;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .main-content {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
+            justify-content: center;
+            width: 100%;
         }
-
         h1 {
             text-align: center;
-            margin: 20px 0;
-            font-size: 2.5rem;
-            color: #6c757d;
+            margin: 32px 0 24px 0;
+            font-size: 2.2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
-
-        h2 {
-            font-size: 1.8rem;
-            color: #495057;
-            margin-bottom: 10px;
-        }
-
         .menu-container {
+            width: 100%;
+            max-width: 900px;
             display: flex;
             flex-wrap: wrap;
+            gap: 32px;
             justify-content: center;
-            width: 90%;
-            max-width: 1200px;
-            gap: 20px;
+            align-items: center;
         }
-
         .menu-section {
-            flex: 1 1 calc(50% - 20px);
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: rgba(0,0,0,0.65);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+            padding: 24px 32px 20px 32px;
+            min-width: 260px;
+            flex: 1 1 320px;
+            max-width: 400px;
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
-
-        .list-box {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
-            background-color: #fdfdfd;
+        .menu-section h2 {
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            color: #ffe082;
+            letter-spacing: 0.5px;
+            font-weight: bold;
+            text-align: center;
         }
-
         ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
             margin: 0;
+            width: 100%;
         }
-
-        li {
+        .menu-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+        .menu-item {
+            background: rgba(255,255,255,0.07);
+            border-radius: 6px;
             padding: 10px 0;
-            font-size: 1.2rem;
-            border-bottom: 1px solid #ddd;
+            text-align: center;
+            font-size: 1rem;
+            color: #fff;
+            transition: background 0.2s, color 0.2s;
+            width: 90%;
+            margin: 0 auto;
         }
-
-        li:last-child {
-            border-bottom: none;
+        .menu-item:hover {
+            background: #ffe08233;
+            color: #ffe082;
         }
-
         .back-button {
             position: absolute;
             top: 20px;
             left: 20px;
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #007bff;
+            background-color: rgba(11, 192, 117, 0.9);
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            z-index: 2;
         }
-
         .back-button:hover {
-            background-color: #0056b3;
+            background-color: rgba(11, 192, 117, 1);
         }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
+        @media (max-width: 900px) {
+            .menu-container {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
             }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
             .menu-section {
-                flex: 1 1 100%;
-            }
-
-            li {
-                font-size: 1rem;
+                min-width: 0;
+                max-width: 95vw;
+                padding: 18px 10px 16px 10px;
             }
         }
-
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
             h1 {
-                font-size: 1.8rem;
+                font-size: 1.4rem;
+                margin: 24px 0 16px 0;
             }
-
-            h2 {
-                font-size: 1.2rem;
+            .menu-section h2 {
+                font-size: 1.05rem;
+                margin-bottom: 12px;
             }
-
+            .menu-section {
+                padding: 12px 4vw 10px 4vw;
+            }
+            .menu-item {
+                font-size: 0.95rem;
+                padding: 8px 0;
+            }
             .back-button {
-                font-size: 14px;
-                padding: 8px 16px;
-            }
-
-            li {
-                font-size: 0.9rem;
+                font-size: 13px;
+                padding: 7px 14px;
+                top: 10px;
+                left: 10px;
             }
         }
     </style>
@@ -132,49 +166,28 @@
 
 <body>
     <button class="back-button" onclick="history.back()">Back</button>
-
-    <h1>Others Menu</h1>
-
-    <div class="menu-container">
-        <div class="menu-section">
-            <div class="list-box">
-                <ul>
-                    <li><h2>Pour Over/Filtered Coffee</h2></li>
-                </ul>
-                <ul>
-                    <li>Classic Pour Over</li>
-                </ul>
-                <ul>
-                    <li>Cold Brew</li>
-                </ul>
-                <ul>
-                    <li>French Press</li>
-                </ul>
-                <ul>
-                    <li>AeroPress</li>
+    <div class="main-content">
+        <h1>Others Menu</h1>
+        <div class="menu-container">
+            <div class="menu-section">
+                <h2>Pour Over / Filtered Coffee</h2>
+                <ul class="menu-list">
+                    <li class="menu-item">Classic Pour Over</li>
+                    <li class="menu-item">Cold Brew</li>
+                    <li class="menu-item">French Press</li>
+                    <li class="menu-item">AeroPress</li>
                 </ul>
             </div>
-        </div>
-        <div class="menu-section">
-            <div class="list-box">
-                <ul>
-                    <li><h2>Tea</h2></li>
-                </ul>
-                <ul>
-                    <li>Green Tea</li>
-                </ul>
-                <ul>
-                    <li>Black Tea</li>
-                </ul>
-                <ul>
-                    <li>Herbal Tea</li>
-                </ul>
-                <ul>
-                    <li>Chai Latte</li>
+            <div class="menu-section">
+                <h2>Tea</h2>
+                <ul class="menu-list">
+                    <li class="menu-item">Green Tea</li>
+                    <li class="menu-item">Black Tea</li>
+                    <li class="menu-item">Herbal Tea</li>
+                    <li class="menu-item">Chai Latte</li>
                 </ul>
             </div>
         </div>
     </div>
 </body>
-
 </html>
