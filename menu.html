@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>MENU</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Nunito+Sans:ital,wght@0,400;0,700;0,800;1,300;1,700&family=Poppins:wght@400;500;600;700;800;900&display=swap');
     * {
       margin: 0;
       padding: 0;
@@ -46,7 +47,7 @@
       padding: 20px 40px;
       position: relative;
       z-index: 10;
-      background: #000000b0;
+      background: transparent;
       backdrop-filter: blur(2px);
     }
 
@@ -96,23 +97,22 @@
 
     main {
       text-align: center;
-      padding: 24px 10px;
     }
 
     main h1 {
       font-size: 2.5rem;
-      margin-bottom: 40px;
+      margin-bottom: 35px;
     }
 
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 50px;
+      grid-template-columns: repeat(5, 1fr);
+      row-gap: 50px;
+      column-gap: 0;
       justify-items: center;
     } 
 
     .card {
-      background: #111;
       padding: 5px;
       border-radius: 12px;
       overflow: hidden;
@@ -142,16 +142,16 @@
 
     .card-content {
       position: relative;
-      width: 200px;
-      height: 240px;
+      width: 300px;
+      height: 320px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .card-content img {
-      width: 110%;
-      height: 110%;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       border-radius: 12px;
       filter: blur(0.5px) brightness(0.95);
@@ -186,30 +186,7 @@
       font-size: 0.9rem;
     }
 
-    /* Custom Scrollbar Styles */
-    ::-webkit-scrollbar {
-      width: 12px;
-      background: #181818;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(120deg, #ffe082 40%, #bfa040 100%);
-      border-radius: 8px;
-      border: 2px solid #181818;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(120deg, #ffe082 70%, #bfa040 100%);
-    }
-
-    ::-webkit-scrollbar-corner {
-      background: #181818;
-    }
-
-    html {
-      scrollbar-width: thin;
-      scrollbar-color: #ffe082 #181818;
-    }
+  
 
     /* Responsive Media Queries */
     @media (max-width: 900px) {
@@ -217,8 +194,8 @@
         grid-template-columns: repeat(2, 1fr);
       }
       .card-content {
-        width: 180px;
-        height: 220px;
+        width: 280px;
+        height: 240px;
       }
     }
 
@@ -227,22 +204,27 @@
         flex-direction: column;
         padding: 16px 8px;
         text-align: center;
-        align-items: flex-start;
+        align-items: start;
       }
       .logo {
         margin-bottom: 8px;
+        margin-top: 16px;
+        margin-left: 20px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.5rem;
       }
       .hamburger {
         display: flex;
         position: absolute;
-        right: 16px;
-        top: 18px;
+        right: 25px;
+        top: 25px;
+        z-index: 1000;
       }
       nav {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         width: 100%;
-        background: #111;
+        background: trensparent;
         position: absolute;
         top: 60px;
         left: 0;
@@ -252,6 +234,9 @@
         box-shadow: 0 8px 24px rgba(0,0,0,0.25);
       }
       nav.open {
+        display: flex;
+        background-color: rgba(1, 113, 67, 0.5);
+        backdrop-filter: blur(8px);
         max-height: 300px;
         padding-bottom: 12px;
       }
@@ -320,7 +305,7 @@
           <span class="card-text">Others</span>
         </div>
       </a>
-      <a href="frappe/shake.html" class="card" style="animation-delay: 0.25s;">
+      <a href="shake.html" class="card" style="animation-delay: 0.25s;">
         <div class="card-content">
           <img src="menu/5.JPG" alt="Portfolio Image 5" loading="lazy" />
           <span class="card-text">Frappe and Shake</span>
@@ -352,7 +337,6 @@
       </a>
       <a href="add-ons.html" class="card" style="animation-delay: 0.40s;">
         <div class="card-content">
-          <img src="your-image8.jpg" alt="Portfolio Image 8" loading="lazy" />
           <span class="card-text">Add-Ons</span>
         </div>
       </a>

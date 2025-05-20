@@ -1,165 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Non Coffee Menu</title>
-     <style>
-        body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-    position: relative; /* Add this for stacking context */
-    overflow-x: hidden;
-}
-body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    width: 100vw;
-    height: 100vh;
-    background: url('menu/7.JPG') center center/cover no-repeat;
-    filter: blur(3px);
-    opacity: 1;
-    z-index: -1;
-    pointer-events: none;
-}
-        h1 {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 2.5rem;
-            color:  #ffe082;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pasta Menu</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
 
-        h2 {
-            font-size: 1.8rem;
-            color: #495057;
-            margin-bottom: 10px;
-        }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('menu/7.JPG') center center/cover no-repeat;
+      filter: blur(3px);
+      opacity: 1;
+      z-index: -1;
+      pointer-events: none;
+    }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 1200px;
-        }
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 2.5rem;
+      color: #ffe082;
+    }
 
-         li {
-            background-color: #00000058;
-            padding: 10px 5px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            font-size: 1rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-            height: 70%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            row-gap: 50px;
-        }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1400px;
+    }
 
+    li {
+      background-color: #00000058;
+      padding: 10px 5px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.3s, border 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      row-gap: 10px;
+      position: relative;
+      border: 2px solid transparent;
+      height: auto;
+    }
 
-        li:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
+    li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
 
-        .menu-section {
-            width: 90%;
-            max-width: 1200px;
-            margin-bottom: 30px;
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    li.expanded {
+      background: rgba(11, 192, 117, 0.15);
+      border: 2px solid #ffe082;
+      box-shadow: 0 6px 24px rgba(11, 192, 117, 0.15);
+    }
 
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: rgba(11, 192, 117, 0.9);
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+    .menu-title {
+      font-weight: bold;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 8px 0;
+      position: relative;
+      z-index: 2;
+      transition: color 0.3s;
+      color: #ffe082;
+      gap: 8px;
+    }
 
-        .back-button:hover {
-            background-color: rgba(11, 192, 117, 0.9);
-        }
+    .chevron {
+      display: inline-block;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 1.1em;
+      margin-left: 6px;
+    }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
+    li.expanded .chevron {
+      transform: rotate(90deg);
+    }
 
-            ul {
-                gap: 15px;
-            }
+    .menu-desc {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.4s;
+      font-size: 0.97em;
+      margin-top: 0;
+      color: #ffffff;
+      width: 100%;
+      display: block;
+      padding: 0 10px;
+      text-align: left;
+    }
 
-            li {
-                font-size: 0.9rem;
-                padding: 15px 10px;
-            }
+    li.expanded .menu-desc {
+      opacity: 1;
+      margin-top: 8px;
+      padding-bottom: 10px;
+    }
 
-            .back-button {
-                font-size: 14px;
-                padding: 8px 16px;
-            }
-        }
+    .menu-section {
+      width: 95%;
+      max-width: 1500px;
+      margin-bottom: 30px;
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.3rem;
-            }
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: rgba(11, 192, 117, 0.9);
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
 
-            ul {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                gap: 30px;
-            }
+    .back-button:hover {
+      background-color: rgba(11, 192, 117, 0.9);
+    }
 
-            li {
-                font-size: 0.8rem;
-                padding: 10px 8px;
-            }
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
 
-            .back-button {
-                font-size: 12px;
-                padding: 6px 12px;
-            }
-        }
-    </style>
+      ul {
+        gap: 15px;
+      }
+
+      li {
+        font-size: 0.9rem;
+        padding: 15px 10px;
+      }
+
+      .back-button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.3rem;
+      }
+
+      ul {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 30px;
+      }
+
+      li {
+        font-size: 0.8rem;
+        padding: 10px 8px;
+      }
+
+      .back-button {
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <button class="back-button" onclick="history.back()">Back</button>
+  <button class="back-button" onclick="history.back()">Back</button>
 
-    <h1>Pasta Menu</h1>
+  <h1>Pasta Menu</h1>
 
-    <div class="menu-section">
-        <ul>
-            <li>Filipino Carbonara</li>
-            <li>Creamy Chicken Pasta</li>
-            <li>Chorizo pesto Pasta</li>
-        </ul>
-    </div>
+  <div class="menu-section">
+    <ul>
+      <li>
+        <span class="menu-title">
+          Filipino Carbonara
+          <span class="chevron">&#8250;</span>
+        </span>
+        <span class="menu-desc">Creamy pasta dish made with al dente fettucine pasta,white sauce,mixed with crispy bacon and garlic,and toated bread.</span>
+      </li>
+      <li>
+        <span class="menu-title">
+          Creamy Chicken Pasta
+          <span class="chevron">&#8250;</span>
+        </span>
+        <span class="menu-desc">Bite-sized chicken tossed in a creamy red sauce over al dente pasta served with toast bread.</span>
+      </li>
+      <li>
+        <span class="menu-title">
+          Chorizo Pesto Pasta
+          <span class="chevron">&#8250;</span>
+        </span>
+        <span class="menu-desc">Savory chorizo mixed with pasta, pesto sauce,black olives,fresh tomatoes and toasted bread.</span>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    document.querySelectorAll('.menu-title').forEach(title => {
+      title.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const li = this.closest('li');
+        const desc = li.querySelector('.menu-desc');
+
+        li.classList.toggle('expanded');
+
+        if (li.classList.contains('expanded')) {
+          desc.style.maxHeight = desc.scrollHeight + 'px';
+        } else {
+          desc.style.maxHeight = null;
+        }
+      });
+    });
+  </script>
 </body>
-
 </html>
