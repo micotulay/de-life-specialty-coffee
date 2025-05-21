@@ -26,9 +26,21 @@
             min-height: 100vh;
             min-width: 100vw;
         }
+        img {
+            border: none;
+            padding: 0;
+            background: transparent;
+            display: block;
+        }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         section {
             position: relative;
@@ -100,7 +112,7 @@
             font-family: 'Times New Roman', Times, serif;
         }
         .container .img-box img {
-            max-width: 250px;
+            max-width: 300px;
             margin-top: 20px;
             transition: transform 0.3s ease-in-out;
         }
@@ -114,14 +126,13 @@
             margin: 0 20px;
         }
         .thumb li img {
-            max-width: 120px;
+            max-width: 150px;
             cursor: pointer;
             transition: transform 0.3s;
         }
         .thumb li img:hover {
             transform: scale(1.1);
         }
-
         .hamburger {
             display: none;
             flex-direction: column;
@@ -140,7 +151,28 @@
             justify-content: center;
         }
 
-        /* Media Queries for Tablets */
+        .browse-menu-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #fff;
+            background-color: #017143;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 8px 15px rgba(1, 113, 67, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn 1s ease forwards 1.5s;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .browse-menu-btn:hover {
+            background-color: #0eb749;
+            transform: translateY(-3px) scale(1.05);
+        }
+
         @media (max-width: 768px) {
             header ul {
                 flex-direction: column;
@@ -168,8 +200,8 @@
             .circle {
                 display: none;
             }
-    }
-        /* Media Queries for Mobile */
+        }
+
         @media (max-width: 480px) {
             .hamburger {
                 display: flex;
@@ -224,7 +256,6 @@
             .social li a img {
                 max-width: 50px;
             }
-
             .nav-links li a {
                 color: #fff;
                 text-decoration: none;
@@ -232,19 +263,9 @@
             .circle {
                 display: none;
             }
-
             .nav-links li a:hover,
             .nav-links li a.active {
                 color: rgba(11, 192, 117, 0.9);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hamburger {
-                display: flex;
-            }
-            header ul {
-                display: none;
             }
         }
     </style>
@@ -270,14 +291,17 @@
                 <h2>It's not just Coffee, It's <br> <span>De Life</span></h2>
             </div>
             <div class="img-box">
-                <img src="thum1.png" class="main-image" alt="Main Coffee Image" />
+                <img src="thumb1.png" class="main-image" alt="Main Coffee Image" />
             </div>
         </div>
         <ul class="thumb">
-            <li><img src="thum1.png" onclick="imgSlider('thum1.png'); changeCircleColor('#017143')" alt="Thumbnail 1" /></li>
+            <li><img src="thumb1.png" onclick="imgSlider('thumb1.png'); changeCircleColor('#017143')" alt="Thumbnail 1" /></li>
             <li><img src="thumb2.png" onclick="imgSlider('thumb2.png'); changeCircleColor('#0eb749')" alt="Thumbnail 2" /></li>
             <li><img src="thumb3.png" onclick="imgSlider('thumb3.png'); changeCircleColor('#d752b1')" alt="Thumbnail 3" /></li>
         </ul>
+
+        <!-- Browse Menu Button -->
+        <a href="menu.html" class="browse-menu-btn">Browse Menu</a>
     </section>
 
     <script>
