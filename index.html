@@ -19,19 +19,25 @@
             padding: 0;
             height: 100%;
             width: 100%;
+            overflow-x: hidden;
         }
         body {
             opacity: 0;
             animation: fadeIn 1.5s ease-in-out forwards;
             min-height: 100vh;
-            min-width: 100vw;
         }
         img {
             border: none;
             padding: 0;
             background: transparent;
             display: block;
+            max-width: 100%;
         }
+         body {
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+            min-height: 100vh;
+         }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -50,14 +56,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow: hidden;
+            overflow-x: hidden;
         }
         section::before {
             content: "";
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            width: 100%;
-            height: 100%;
             background: url('images/new.JPG') center center/cover no-repeat;
             filter: blur(5px) brightness(0.5);
             opacity: 2;
@@ -71,9 +75,7 @@
             align-items: center;
         }
         header .logo {
-            max-width: 200px;
-            margin-top: 0px;
-            margin-left: 10px;
+            max-width: 180px;
         }
         header ul {
             display: flex;
@@ -119,20 +121,31 @@
         .thumb {
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
             margin-top: 30px;
+            padding: 0 10px;
+            gap: 20px;
         }
         .thumb li {
             list-style: none;
-            margin: 0 20px;
         }
         .thumb li img {
-            max-width: 150px;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        .thumb li img:hover {
-            transform: scale(1.1);
-        }
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.thumb li img:hover {
+    transform: scale(1.1);
+    border-color: #ffffffaa;
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2), 0 0 8px rgba(1, 113, 67, 0.6);
+}
+
         .hamburger {
             display: none;
             flex-direction: column;
@@ -192,13 +205,8 @@
                 max-width: 200px;
             }
             .thumb li img {
-                max-width: 100px;
-            }
-            .social li a img {
-                max-width: 50px;
-            }
-            .circle {
-                display: none;
+                width: 100px;
+                height: 100px;
             }
         }
 
@@ -233,14 +241,6 @@
                 flex-direction: column;
                 align-items: center;
             }
-            header ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            header ul li a {
-                margin: 5px 0;
-                font-size: 0.8em;
-            }
             .container .text-box h2 {
                 font-size: 2em;
             }
@@ -251,21 +251,8 @@
                 max-width: 200px;
             }
             .thumb li img {
-                max-width: 100px;
-            }
-            .social li a img {
-                max-width: 50px;
-            }
-            .nav-links li a {
-                color: #fff;
-                text-decoration: none;
-            }
-            .circle {
-                display: none;
-            }
-            .nav-links li a:hover,
-            .nav-links li a.active {
-                color: rgba(11, 192, 117, 0.9);
+                width: 90px;
+                height: 90px;
             }
         }
     </style>
@@ -299,8 +286,6 @@
             <li><img src="thumb2.png" onclick="imgSlider('thumb2.png'); changeCircleColor('#0eb749')" alt="Thumbnail 2" /></li>
             <li><img src="thumb3.png" onclick="imgSlider('thumb3.png'); changeCircleColor('#d752b1')" alt="Thumbnail 3" /></li>
         </ul>
-
-        <!-- Browse Menu Button -->
         <a href="menu.html" class="browse-menu-btn">Browse Menu</a>
     </section>
 
