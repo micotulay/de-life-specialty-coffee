@@ -451,28 +451,6 @@ function toggleMenu() {
     });
   });
 
-  const hamburger = document.getElementById('hamburger');
-    const nav = document.getElementById('nav');
-    hamburger.addEventListener('click', () => {
-      nav.classList.toggle('open');
-    });
-    document.addEventListener('click', (e) => {
-      if (
-        window.innerWidth <= 600 &&
-        nav.classList.contains('open') &&
-        !nav.contains(e.target) &&
-        e.target !== hamburger &&
-        !hamburger.contains(e.target)
-      ) {
-        nav.classList.remove('open');
-      }
-    });
-    hamburger.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        nav.classList.toggle('open');
-      }
-    });
-
   // Reveal animation on scroll
   window.addEventListener('scroll', () => {
     document.querySelectorAll('.reveal').forEach((section) => {
