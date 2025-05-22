@@ -43,14 +43,13 @@ display: none;
 
 .nav-links {
 display: flex;
-gap: 2.5rem;
 }
 
 .nav-links a {
 color: white;
 text-decoration: none;
 font-weight: 500;
-font-size: 1.3rem;
+font-size: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -65,7 +64,6 @@ right: 0;
 width: 100%;
 display: none;
 flex-direction: column;
-background: url('DSC_4309.JPG') center/cover no-repeat;
 padding: 1rem;
 text-align: center;
 }
@@ -300,10 +298,43 @@ cursor: pointer;
 background-color: #5c4a37;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
 .mission-section {
 flex-direction: column;
 }
+.hamburger {
+  display: flex;
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  z-index: 1000;
+  }
+nav.links {
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: trensparent;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+nav.open {
+  display: flex;
+  background-color: rgba(1, 113, 67, 0.5);
+  backdrop-filter: blur(8px);
+  max-height: 300px;
+  padding-bottom: 12px;
+  }
+nav a {
+  margin: 0;
+  font-size: 1rem;
+  display: block;
+  }
+
 }
 
 </style>
@@ -315,7 +346,7 @@ flex-direction: column;
 <nav class="nav-links" id="navMenu">
   <a href="index.html">Home</a>
   <a href="menu.html">Menu</a>
-  <a href="about.html">About Us</a>
+  <a href="About us.html">About Us</a>
 </nav>
 </header>
 
@@ -409,8 +440,38 @@ flex-direction: column;
 
 <script>
 function toggleMenu() {
-  document.getElementById('navLinks').classList.toggle('show');
+  document.getElementById('navMenu').classList.toggle('show');
 }
+
+  const navItems = document.querySelectorAll('.nav-links li a');
+  navItems.forEach(link => {
+  link.addEventListener('click', () => {
+    navItems.forEach(item => item.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+
+  const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (
+        window.innerWidth <= 600 &&
+        nav.classList.contains('open') &&
+        !nav.contains(e.target) &&
+        e.target !== hamburger &&
+        !hamburger.contains(e.target)
+      ) {
+        nav.classList.remove('open');
+      }
+    });
+    hamburger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        nav.classList.toggle('open');
+      }
+    });
 
   // Reveal animation on scroll
   window.addEventListener('scroll', () => {
