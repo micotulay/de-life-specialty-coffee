@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add-Ons</title>
+    <title>Frappe and Shake Menu</title>
     <style>
         html, body {
             height: 100%;
@@ -20,7 +20,6 @@
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* center vertically */
             align-items: center;     /* center horizontally */
         }
         body::before {
@@ -29,7 +28,7 @@
             top: 0; left: 0; right: 0; bottom: 0;
             width: 100vw;
             height: 100vh;
-            background: url('menu/4.JPG') center center/cover no-repeat;
+            background: url('menu/5.JPG') center center/cover no-repeat;
             filter: blur(3px);
             opacity: 1;
             z-index: -1;
@@ -44,8 +43,8 @@
         }
         h1 {
             text-align: center;
-            margin: 32px 0 24px 0;
-            font-size: 2.2rem;
+            margin: 20px 0 20px 0;
+            font-size: 2.5rem;
             font-weight: bold;
             letter-spacing: 1px;
         }
@@ -55,6 +54,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 32px;
+            margin-top: 125px;
             justify-content: center;
             align-items: center;
         }
@@ -131,22 +131,32 @@
                 flex-direction: column;
                 gap: 20px;
                 align-items: center;
+                margin-top: 10px
             }
             .menu-section {
                 min-width: 0;
                 max-width: 95vw;
                 padding: 18px 10px 16px 10px;
             }
+            .menu-section h2 {
+                font-size: 1.2rem;
+                margin-bottom: 12px;
+            }
         }
         @media (max-width: 600px) {
             h1 {
-                font-size: 1.4rem;
-                margin: 24px 0 16px 0;
+                font-size: 1.3rem;
+                margin: 27px 0 16px 0;
             }
             .menu-section h2 {
                 font-size: 1.05rem;
-                margin-bottom: 12px;
+                margin-bottom: 15px;
             }
+            .menu-container {
+                flex-direction: column;
+                gap: 16px;
+                margin-top: 50px;
+            } 
             .menu-section {
                 padding: 12px 4vw 10px 4vw;
             }
@@ -155,10 +165,12 @@
                 padding: 8px 0;
             }
             .back-button {
-                font-size: 13px;
+                font-size: 17px;
                 padding: 7px 14px;
                 top: 10px;
                 left: 10px;
+                margin-top: 15px;
+                margin-left: 10px;
             }
         }
     </style>
@@ -175,7 +187,7 @@
                     <li class="menu-item">Coffee Jelly</li>
                     <li class="menu-item">Drizzle/Toppings</li>
                     <li class="menu-item">Extra Shot</li>
-                    <li class="menu-item">Flavorewd Syrup</li>
+                    <li class="menu-item">Flavored Syrup</li>
                     <li class="menu-item">Milk</li>
                     <li class="menu-item">Oat Milk</li>
                     <li class="menu-item">Sugar Syrup</li>
@@ -193,7 +205,7 @@
                     <li class="menu-item">Parmessan</li>
                     <li class="menu-item">Rice</li>
                     <li class="menu-item">Salted Egg</li>
-                    <li class="menu-item">Soy Sauce (For Bagnet)</li>
+                    <li class="menu-item">Soy Sauce (for Bagnet)</li>
                 </ul>
             </div>
         </div>
