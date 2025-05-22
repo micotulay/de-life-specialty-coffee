@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us | De Life Café</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About Us | De Life Café</title>
 <style>
-  * {
+* {
 margin: 0;
 padding: 0;
 box-sizing: border-box;
@@ -65,6 +65,7 @@ right: 0;
 width: 100%;
 display: none;
 flex-direction: column;
+background: url('DSC_4309.JPG') center/cover no-repeat;
 padding: 1rem;
 text-align: center;
 }
@@ -171,8 +172,30 @@ padding: 1rem;
 border-radius: 15px;
 box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 text-align: center;
-width: 220px;
+width: 260px;
+height: 200px;
 transition: transform 0.3s;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.owner {
+border: 2px solid #dfc28a;
+background: #fff3d9;
+transform: scale(1.05);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.owner h3 {
+color: #b8860b;
+font-size: 1.5rem;
+}
+
+.owner p {
+font-weight: bold;
+color: #5a4325;
 }
 
 .card:hover {
@@ -250,7 +273,7 @@ background: #3e2f21;
 }
 
 footer p {
-  color: #fff;
+color: #fff;
 }
 
 .reveal.revealed {
@@ -278,167 +301,137 @@ background-color: #5c4a37;
 }
 
 @media (max-width: 768px) {
-  .mission-section {
-    flex-direction: column;
-  }
-  .burger {
-    display: block;
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    z-index: 1000;
-  }
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 100%;
-    padding: 20px 0;
-    z-index: 999;
-    background-color: rgba(1, 113, 67, 0.5);
-    backdrop-filter: blur(8px);
-  }
-  .nav-links.show {
-    display: flex;
-  }
-  .nav-links li {
-    margin: 10px 0;
-  }
+.mission-section {
+flex-direction: column;
+}
 }
 
 </style>
 </head>
 <body>
-   <header class="navbar">
-  <div class="logo">DE LIFE</div>
-  <div class="burger" onclick="toggleMenu()">☰</div>
-  <nav class="nav-links" id="navMenu">
-    <a href="index.html">Home</a>
-    <a href="menu.html">Menu</a>
-    <a href="About us.html">About Us</a>
-  </nav>
+  <header class="navbar">
+<div class="logo">DE LIFE</div>
+<div class="burger" onclick="toggleMenu()">☰</div>
+<nav class="nav-links" id="navMenu">
+  <a href="index.html">Home</a>
+  <a href="menu.html">Menu</a>
+  <a href="about.html">About Us</a>
+</nav>
 </header>
 
-  <div class="hero">
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <h1>Welcome to De Life</h1>
-      <p class="hero-subtext">Your cozy corner of comfort and coffee.</p>
-    </div>
+<div class="hero">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>Welcome to De Life</h1>
+    <p class="hero-subtext">Your cozy corner of comfort and coffee.</p>
   </div>
+</div>
 
-  <section class="about-section reveal">
-    <h2>Our Story</h2>
+<section class="about-section reveal">
+  <h2>Our Story</h2>
+  <p>
+    De Life Café was born out of a passion for great coffee, warm ambiance, and the joy of community. Whether you're catching up with friends, working remotely, or just taking a break—our space is your sanctuary.
+  </p>
+</section>
+
+<section class="mission-section reveal">
+  <div class="mission-image"></div>
+  <div class="mission-text">
+    <h2>Our Mission</h2>
     <p>
-      De Life Café was born out of a passion for great coffee, warm ambiance, and the joy of community. Whether you're catching up with friends, working remotely, or just taking a break—our space is your sanctuary.
+      To serve every guest not just coffee—but a moment of comfort, joy, and inspiration. We blend flavors and feelings to craft a space that feels like home.
     </p>
-  </section>
-
-  <section class="mission-section reveal">
-    <div class="mission-image"></div>
-    <div class="mission-text">
-      <h2>Our Mission</h2>
-      <p>
-        To serve every guest not just coffee—but a moment of comfort, joy, and inspiration. We blend flavors and feelings to craft a space that feels like home.
-      </p>
-    </div>
-  </section>
-
-  <section class="team-section reveal">
-    <h2>Meet the Owners</h2>
-    <div class="team-members">
-      <div class="card"><h3></h3><p>Shihara G. Baybayan</p></div>
-      <div class="card"><h3></h3><p>Dutch Padilla Dandasan</p></div>
-    </div>
-  </section>
-
-  <section class="location-section reveal">
-    <h2>Our Location</h2>
-    <img src="your-location-screenshot.jpg" alt="Cafe Location" class="location-image">
-    <a href="https://maps.app.goo.gl/7AXodYmMBGPywcYUA" target="_blank">📍 View on Google Maps</a>
-  </section>
-
-  <section class="hours-section reveal">
-    <h2>Opening Hours</h2>
-    <ul>
-      <li><strong>Monday – Friday:</strong> 8:00 AM – 12:00 AM</li>
-      <li><strong>Saturday:</strong> 8:00 AM – 12:00 AM</li>
-      <li><strong>Sunday:</strong> Closed</li>
-    </ul>
-  </section>
-
-  <section class="specials-section reveal">
-  <h2>Customer Favorites</h2>
-  <div class="special-cards">
-    <div class="card">
-      <div class="card-image" style="background-image: url('your-image1.jpg');"></div>
-      <h3></h3>
-      <p></p>
-    </div>
-    <div class="card">
-      <div class="card-image" style="background-image: url('your-image2.jpg');"></div>
-      <h3></h3>
-      <p></p>
-    </div>
-    <div class="card">
-      <div class="card-image" style="background-image: url('your-image3.jpg');"></div>
-      <h3></h3>
-      <p></p>
-    </div>
   </div>
 </section>
 
+<section class="team-section reveal">
+  <h2>Meet the Owners</h2>
+  <div class="team-members">
+    <div class="card owner"><h3>Shihara G. Baybayan</h3><p>Owner</p></div>
+    <div class="card"><h3>Dutch Padilla Dandasan</h3><p>Co-Owner</p></div>
+  </div>
+</section>
 
-  <section class="testimonials-section reveal">
-    <h2>What Our Customers Say</h2>
-    <div class="testimonial">
-      <p>“mayat”</p>
-      <p><strong>Trisha</strong></p>
-    </div>
-    <div class="testimonial">
-      <p>“Maganda the matcha is so masarap ”</p>
-      <p><strong>Alyssa</strong></p>
-    </div>
-    <div class="testimonial">
-      <p>“Ang ganda,wala akong masabe ”</p>
-      <p><strong>Carlo</strong></p>
-    </div>
-  </section>
+<section class="location-section reveal">
+  <h2>Our Location</h2>
+  <img src="Screenshot (6).png" alt="Cafe Location" class="location-image">
+  <a href="https://maps.app.goo.gl/7AXodYmMBGPywcYUA" target="_blank">📍 View on Google Maps</a>
+</section>
 
-  <footer>
-    <p>© 2025 DE LIFE SPECIALTY COFFEE. All rights reserved.</p>
-  </footer>
+<section class="hours-section reveal">
+  <h2>Opening Hours</h2>
+  <ul>
+    <li><strong>Monday – Friday:</strong> 8:00 AM – 12:00 AM</li>
+    <li><strong>Saturday:</strong> 8:00 AM – 12:00 AM</li>
+    <li><strong>Sunday:</strong> Closed</li>
+  </ul>
+</section>
 
-  <button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">↑</button>
+<section class="specials-section reveal">
+<h2>Customer Favorites</h2>
+<div class="special-cards">
+  <div class="card">
+    <div class="card-image" style="background-image: url('your-image1.jpg');"></div>
+    <h3></h3>
+    <p></p>
+  </div>
+  <div class="card">
+    <div class="card-image" style="background-image: url('your-image2.jpg');"></div>
+    <h3></h3>
+    <p></p>
+  </div>
+  <div class="card">
+    <div class="card-image" style="background-image: url('your-image3.jpg');"></div>
+    <h3></h3>
+    <p></p>
+  </div>
+</div>
+</section>
 
-  <script>
-  function toggleMenu() {
-    document.getElementById('navMenu').classList.toggle('show');
-  }
 
-    // Reveal animation on scroll
-    window.addEventListener('scroll', () => {
-      document.querySelectorAll('.reveal').forEach((section) => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const trigger = window.innerHeight / 1.2;
-        if (sectionTop < trigger) {
-          section.classList.add('revealed');
-        }
-      });
+<section class="testimonials-section reveal">
+  <h2>What Our Customers Say</h2>
+  <div class="testimonial">
+    <p>“mayat”</p>
+    <p><strong>Trisha</strong></p>
+  </div>
+  <div class="testimonial">
+    <p>“Maganda siya, cozy and masarap 'yong foods. You get what you pay for, natuwa kami ni mi luvs”</p>
+    <p><strong>Alyssa</strong></p>
+  </div>
+</section>
 
-      // Toggle scroll-to-top button
-      const topBtn = document.getElementById("scrollTopBtn");
-      topBtn.style.display = window.scrollY > 200 ? "block" : "none";
+<footer>
+  <p>© 2025 DE LIFE SPECIALTY COFFEE. All rights reserved.</p>
+</footer>
+
+<button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">↑</button>
+
+<script>
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('show');
+}
+
+  // Reveal animation on scroll
+  window.addEventListener('scroll', () => {
+    document.querySelectorAll('.reveal').forEach((section) => {
+      const sectionTop = section.getBoundingClientRect().top;
+      const trigger = window.innerHeight / 1.2;
+      if (sectionTop < trigger) {
+        section.classList.add('revealed');
+      }
     });
 
-    // Scroll to top function
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  </script>
+    // Toggle scroll-to-top button
+    const topBtn = document.getElementById("scrollTopBtn");
+    topBtn.style.display = window.scrollY > 200 ? "block" : "none";
+  });
+
+  // Scroll to top function
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+</script>
 
 </body>
 </html>
